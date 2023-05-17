@@ -284,8 +284,12 @@
                                 listItems[0].textContent = `Home status: ${item.homeStatus}`;
                                 listItems[1].textContent = `City: ${item.city}`;
                                 listItems[2].textContent = `Country: ${item.country}`;
-                                listItems[3].textContent = `Currency: ${item.currency}`;
-                                listItems[4].textContent = `Date price changed: ${item.datePriceChanged}`;
+
+                                // Code para may commas yung sa price
+                                let sellingPrice = item.price.toLocaleString();
+                                listItems[3].textContent = `Selling Price: $${sellingPrice}`;
+
+                                listItems[4].textContent = `Lot Area: ${item.lotAreaValue} ${item.lotAreaUnit}`;
                             } else {
                                 cards[i].innerHTML = "";
                             }
