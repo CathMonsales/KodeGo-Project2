@@ -30,15 +30,6 @@
             max-width: 300px;
         }
 
-        .card ul {
-            list-style: none;
-            padding: 20px;
-        }
-
-        .card ul li {
-            margin-bottom: 10px;
-        }
-
         .pagination-container {
             display: flex;
             justify-content: center;
@@ -70,16 +61,7 @@
             border-color: #007bff;
         }
 
-        .pagination li a {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 10px;
-            border: 1px solid #dee2e6;
-            border-radius: 5px;
-            text-decoration: none;
-        }
-
+        .pagination li a,
         .pagination li span {
             display: flex;
             justify-content: center;
@@ -89,52 +71,198 @@
             border-radius: 5px;
         }
     </style>
+
 </head>
 
 <body>
-    <div class="pagination-wrapper">
-        <div class="card">
-            <ul>
-                <li>Home status:</li>
-                <li>City:</li>
-                <li>Country:</li>
-                <li>Currency:</li>
-                <li>Date price changed: </li>
-            </ul>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <img src="images/staybnb.png" width="150px" class="navbar-brand p-2" href="index.html">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Properties</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Agents</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
         </div>
+    </nav>
 
-        <div class="card">
-            <ul>
-                <li>Home status:</li>
-                <li>City:</li>
-                <li>Country:</li>
-                <li>Currency:</li>
-                <li>Date price changed: </li>
-            </ul>
-        </div>
-
-        <div class="card">
-            <ul>
-                <li>Home status: </li>
-                <li>City: </li>
-                <li>Country: </li>
-                <li>Currency: </li>
-                <li>Date price changed:</li>
-            </ul>
+    <div class="px-4 py-5 my-5 text-center">
+        <h1 class="display-5 fw-bold text-body-emphasis">Property Listings</h1>
+        <div class="col-lg-6 mx-auto">
+            <p class="lead mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor provident labore
+                repudiandae dolore voluptate veritatis alias libero culpa eius quisquam, modi deserunt unde, dolores
+                temporibus perferendis veniam, pariatur quas voluptates?</p>
         </div>
     </div>
 
-    <div class="pagination-container">
-        <ul class="pagination">
-            <li class="page-item disabled"><span class="page-link">Previous</span></li>
-            <li class="page-item active"><span class="page-link">1</span></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">4</a></li>
-            <li class="page-item"><a class="page-link" href="#">5</a></li>
-            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-        </ul>
+    <div class="container">
+        <div class="pagination-wrapper pt-1">
+            <div class="card">
+                <ul class="p-4 list-unstyled">
+                    <li>Home status:</li>
+                    <li>City:</li>
+                    <li>Country:</li>
+                    <li>Currency:</li>
+                    <li>Date price changed: </li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <ul class="p-4 list-unstyled">
+                    <li>Home status:</li>
+                    <li>City:</li>
+                    <li>Country:</li>
+                    <li>Currency:</li>
+                    <li>Date price changed: </li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <ul class="p-4 list-unstyled">
+                    <li>Home status: </li>
+                    <li>City: </li>
+                    <li>Country: </li>
+                    <li>Currency: </li>
+                    <li>Date price changed:</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="pagination-wrapper pt-3">
+            <div class="card">
+                <ul class="p-4 list-unstyled">
+                    <li>Home status:</li>
+                    <li>City:</li>
+                    <li>Country:</li>
+                    <li>Currency:</li>
+                    <li>Date price changed: </li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <ul class="p-4 list-unstyled">
+                    <li>Home status:</li>
+                    <li>City:</li>
+                    <li>Country:</li>
+                    <li>Currency:</li>
+                    <li>Date price changed: </li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <ul class="p-4 list-unstyled">
+                    <li>Home status: </li>
+                    <li>City: </li>
+                    <li>Country: </li>
+                    <li>Currency: </li>
+                    <li>Date price changed:</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="pagination-wrapper pt-5">
+            <div class="card">
+                <ul class="p-4 list-unstyled">
+                    <li>Home status:</li>
+                    <li>City:</li>
+                    <li>Country:</li>
+                    <li>Currency:</li>
+                    <li>Date price changed: </li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <ul class="p-4 list-unstyled">
+                    <li>Home status:</li>
+                    <li>City:</li>
+                    <li>Country:</li>
+                    <li>Currency:</li>
+                    <li>Date price changed: </li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <ul class="p-4 list-unstyled">
+                    <li>Home status: </li>
+                    <li>City: </li>
+                    <li>Country: </li>
+                    <li>Currency: </li>
+                    <li>Date price changed:</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="pagination-container">
+            <ul class="pagination pb-4 pt-5">
+                <li class="page-item disabled"><span class="page-link">Previous</span></li>
+                <li class="page-item active"><span class="page-link">1</span></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                <li class="page-item"><a class="page-link" href="#">5</a></li>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+        </div>
+
     </div>
+
+    <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top bg-light">
+        <div class="col-mb-1">
+
+        </div>
+
+        <div class="col-mb-5">
+            <img src="images/staybnb.png" width="200" class="ml-5">
+        </div>
+
+        <div class="col-mb-3">
+            <h5>Section</h5>
+            <ul class="nav flex-column">
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+            </ul>
+        </div>
+
+        <div class="col-mb-3">
+            <h5>Section</h5>
+            <ul class="nav flex-column">
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+            </ul>
+        </div>
+
+        <div class="col-mb-3">
+            <h5>Section</h5>
+            <ul class="nav flex-column">
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+            </ul>
+        </div>
+    </footer>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const cards = document.querySelectorAll(".card");
