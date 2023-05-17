@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .pagination-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            width: 90%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: #fff;
+            box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+            overflow: hidden;
+            width: 30%;
+            max-width: 300px;
+        }
+
+        .card ul {
+            list-style: none;
+            padding: 20px;
+        }
+
+        .card ul li {
+            margin-bottom: 10px;
+        }
+
+        .pagination-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .pagination {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .pagination li {
+            margin: 0 5px;
+        }
+
+        .pagination li.disabled span,
+        .pagination li.disabled a {
+            opacity: 0.5;
+            cursor: default;
+        }
+
+        .pagination li.active span,
+        .pagination li.active a {
+            background-color: #007bff;
+            color: #fff;
+            border-color: #007bff;
+        }
+
+        .pagination li a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .pagination li span {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="pagination-wrapper">
+        <div class="card">
+            <ul>
+                <li>Home status:</li>
+                <li>City:</li>
+                <li>Country:</li>
+                <li>Currency:</li>
+                <li>Date price changed: </li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <ul>
+                <li>Home status:</li>
+                <li>City:</li>
+                <li>Country:</li>
+                <li>Currency:</li>
+                <li>Date price changed: </li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <ul>
+                <li>Home status: </li>
+                <li>City: </li>
+                <li>Country: </li>
+                <li>Currency: </li>
+                <li>Date price changed:</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="pagination-container">
+        <ul class="pagination">
+            <li class="page-item disabled"><span class="page-link">Previous</span></li>
+            <li class="page-item active"><span class="page-link">1</span></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">4</a></li>
+            <li class="page-item"><a class="page-link" href="#">5</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+    </div>
+    <script>
+        const cards = document.querySelectorAll(".card");
+        const pagination = document.querySelector(".pagination");
+        const pageItems = document.querySelectorAll(".page-item");
+        const pageLinks = document.querySelectorAll(".page-link");
+        
+        let currentPage = 1;
+
+        function fetchData(){
+            fetch ("test.json")
+            .then((response) => response.json())
+            .then((data) =>{
+                console.log(data);
+                for (let i = 0; i <cards.length; i++) {
+                    let index = (currentPage - 1) * 3 + 1;
+                    if (index < data.length) {
+                        let item = data[index];
+                        let listItems = cards [1].querySelectorAll(".li");
+                        listItems[0].textContent = "Home status: ${item.homeStatus}";
+                        listItems[1].textContent = "City: ${item.city}";
+                        listItems[2].textContent = "Country: ${item.country}";
+                        listItems[3].textContent = "currency: ${item.currency}";
+                        listItems[4].textContent = "Date price changed: ${item.datePricedChanged}";
+                    } else {
+                        cards[i].innerHTML = "";
+                    }
+                }
+            })
+            .catch((error) => {
+                alert (`Error fetching data: ${error}`)
+            })
+        }
+        function updatePagination() {
+    for (let i = 0; i < pageItems.length; i++) {
+        pageItems[i].classList.remove("active");
+        pageItems[i].classList.remove("disabled");
+    }
+    pageItems[currentPage].classList.add("active");
+    if (currentPage === 1) {
+        pageItems[0].classList.add("disabled");
+    }
+    if (currentPage === 5) {
+        pageItems[6].classList.add("disabled");
+    }
+}
+
+function handleClick(event) {
+    event.preventDefault();
+    let text = event.target.textContent;
+    if (text === "Previous") {
+        if (currentPage > 1) {
+            currentPage--;
+        }
+    } else if (text === "Next") {
+        if (currentPage < 5) {
+            currentPage++;
+        }
+    } else {
+        currentPage = parseInt(text);
+    }
+    fetchData();
+    updatePagination();
+}
+
+for (let i = 0; i < pageLinks.length; i++) {
+    pageLinks[i].addEventListener("click", handleClick);
+}
+
+fetchData();
+updatePagination();
+    </script>
+</body>
+
+</html>
