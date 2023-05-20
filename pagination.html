@@ -215,6 +215,8 @@
                 <li class="page-item"><a class="page-link" href="#">3</a></li>
                 <li class="page-item"><a class="page-link" href="#">4</a></li>
                 <li class="page-item"><a class="page-link" href="#">5</a></li>
+                <li class="page-item"><a class="page-link" href="#">6</a></li>
+                <li class="page-item"><a class="page-link" href="#">7</a></li>
                 <li class="page-item"><a class="page-link" href="#">Next</a></li>
             </ul>
         </div>
@@ -264,81 +266,120 @@
         </div>
     </footer>
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const cards = document.querySelectorAll(".card");
-            const pagination = document.querySelector(".pagination");
-            const pageItems = document.querySelectorAll(".page-item");
-            const pageLinks = document.querySelectorAll(".page-link");
-            let currentPage = 1;
+document.addEventListener("DOMContentLoaded", function () {
+ const cards = document.querySelectorAll(".card");
+ const pagination = document.querySelector(".pagination");
+ const pageItems = document.querySelectorAll(".page-item");
+ const pageLinks = document.querySelectorAll(".page-link");
+ let currentPage = 1;
+ let data; // store the fetched data in a variable
 
-            function fetchData() {
-                fetch("json/data.json")
-                    .then((response) => response.json())
-                    .then((data) => {
-                        console.log(data);
-                        for (let i = 0; i < cards.length; i++) {
-                            let index = (currentPage - 1) * 3 + i;
-                            if (index < data.length) {
-                                let item = data[index];
-                                let listItems = cards[i].querySelectorAll("li");
-                                listItems[0].textContent = `Home status: ${item.homeStatus}`;
-                                listItems[1].textContent = `City: ${item.city}`;
-                                listItems[2].textContent = `Country: ${item.country}`;
+ function fetchData() {
+ // check if data is already fetched
+ if (data) {
+ // use the existing data
+ for (let i = 0; i < cards.length; i++) {
+ let index = (currentPage - 1) * 3 + i;
+ if (index < data.length) {
+ let item = data[index];
+ let listItems = cards[i].querySelectorAll("li");
 
-                                // Code para may commas yung sa price
-                                let sellingPrice = item.price.toLocaleString();
-                                listItems[3].textContent = `Selling Price: $${sellingPrice}`;
+ // Code to hide undefined values
+ for (let listItem of listItems) {
+ listItem.style.display = "block"; 
+ }
+ if (item.homeStatus === undefined) {
+ listItems[0].style.display = "none"; 
+ }
+ if (item.city === undefined) {
+ listItems[1].style.display = "none";
+ }
+ if (item.country === undefined) {
+ listItems[2].style.display = "none";
+ }
+ if (item.price === undefined) {
+ listItems[3].style.display = "none";
+ }
+ if (item.lotAreaValue === undefined || item.lotAreaUnit === undefined) {
+ listItems[4].style.display = "none";
+ }
 
-                                listItems[4].textContent = `Lot Area: ${item.lotAreaValue} ${item.lotAreaUnit}`;
-                            } else {
-                                cards[i].innerHTML = "";
-                            }
-                        }
-                    })
-                    .catch((error) => {
-                        alert(`Error fetching data: ${error}`);
-                    });
-            }
+ // Code to display the values
+ listItems[0].textContent = `Home status: ${item.homeStatus}`;
+ listItems[1].textContent = `City: ${item.city}`;
+ listItems[2].textContent = `Country: ${item.country}`;
 
-            function updatePagination() {
-                for (let i = 0; i < pageItems.length; i++) {
-                    pageItems[i].classList.remove("active");
-                    pageItems[i].classList.remove("disabled");
-                }
-                pageItems[currentPage].classList.add("active");
-                if (currentPage === 1) {
-                    pageItems[0].classList.add("disabled");
-                }
-                if (currentPage === 5) {
-                    pageItems[6].classList.add("disabled");
-                }
-            }
+ // Code para may commas yung sa price
+ let sellingPrice = item.price.toLocaleString();
+ listItems[3].textContent = `Selling Price: $${sellingPrice}`;
 
-            function handleClick(event) {
-                event.preventDefault();
-                let text = event.target.textContent;
-                if (text === "Previous") {
-                    if (currentPage > 1) {
-                        currentPage--;
-                    }
-                } else if (text === "Next") {
-                    if (currentPage < 5) {
-                        currentPage++;
-                    }
-                } else {
-                    currentPage = parseInt(text);
-                }
-                fetchData();
-                updatePagination();
-            }
+ listItems[4].textContent = `Lot Area: ${item.lotAreaValue} ${item.lotAreaUnit}`;
+ } else {
+ cards[i].innerHTML = "";
+ }
+ }
+ } else {
+ // fetch the data for the first time
+ fetch("json/data.json")
+ .then((response) => response.json())
+ .then((json) => {
+ console.log(json);
+ if (Object.keys(json).length === 0) {
+ return;
+ }
+ // store the data in the variable
+ data = json;
+ // call the function again with the data
+ fetchData();
+ })
+ .catch((error) => {
+ alert(`Error fetching data: ${error}`);
+ });
+ }
+ }
 
-            for (let i = 0; i < pageLinks.length; i++) {
-                pageLinks[i].addEventListener("click", handleClick);
-            }
+ function updatePagination() {
+ for (let i = 0; i < pageItems.length; i++) {
+ pageItems[i].classList.remove("active");
+ pageItems[i].classList.remove("disabled");
+ }
+ pageItems[currentPage].classList.add("active");
+ if (currentPage === 1) {
+ pageItems[0].classList.add("disabled");
+ }
+ if (currentPage === 7) {
+ pageItems[8].classList.add("disabled");
+ }
+ }
 
-            fetchData();
-            updatePagination();
-        });
+ function handleClick(event) {
+ event.preventDefault();
+ let text = event.target.textContent;
+ if (text === "Previous") {
+ if (currentPage > 1) {
+ currentPage--;
+ fetchData();
+ updatePagination();
+ }
+ } else if (text === "Next") {
+ if (currentPage < 7) {
+ currentPage++;
+ fetchData();
+ updatePagination();
+ }
+ } else {
+ currentPage = parseInt(text);
+ fetchData();
+ updatePagination();
+ }
+ }
+
+ for (let link of pageLinks) {
+ link.addEventListener("click", handleClick);
+ }
+
+ fetchData();
+});
     </script>
 
 </body>
