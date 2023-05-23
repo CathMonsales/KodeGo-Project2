@@ -273,34 +273,39 @@
             let currentPage = 1;
 
             function fetchData() {
-                fetch("json/data.json")
-                    .then((response) => response.json())
-                    .then((data) => {
-                        console.log(data);
-                        for (let i = 0; i < cards.length; i++) {
-                            let index = (currentPage - 1) * 3 + i;
-                            if (index < data.length) {
-                                let item = data[index];
-                                let listItems = cards[i].querySelectorAll("li");
-                                let image = document.createElement("img");
-                                image.src = item.imgSrc;
-                                cards[i].prepend(image);
-                                listItems[0].textContent = `Home status: ${item.homeStatus}`;
-                                listItems[1].textContent = `City: ${item.city}`;
-                                listItems[2].textContent = `Country: ${item.country}`;
+    fetch("json/data.json")
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data);
+            for (let i = 0; i < cards.length; i++) {
+                let index = (currentPage - 1) * 3 + i;
+                if (index < data.length) {
+                    let item = data[index];
+                    let listItems = cards[i].querySelectorAll("li");
 
-                                let sellingPrice = item.price.toLocaleString();
-                                listItems[3].textContent = `Selling Price: $${sellingPrice}`;
+                   
+                    let existingImage = cards[i].querySelector("img");
+                    if (existingImage) {
+                        cards[i].removeChild(existingImage);
+                    }
 
-                                listItems[4].textContent = `Lot Area: ${item.lotAreaValue} ${item.lotAreaUnit}`;
-                                
-                            } else {
-                                cards[i].innerHTML = "";
-                            }
-                        }
+                    let image = document.createElement("img");
+                    image.src = item.imgSrc;
+                    cards[i].prepend(image);
+                    listItems[0].textContent = `Home status: ${item.homeStatus}`;
+                    listItems[1].textContent = `City: ${item.city}`;
+                    listItems[2].textContent = `Country: ${item.country}`;
 
-                        
-                    })
+                    let sellingPrice = item.price.toLocaleString();
+                    listItems[3].textContent = `Selling Price: $${sellingPrice}`;
+
+                    listItems[4].textContent = `Lot Area: ${item.lotAreaValue} ${item.lotAreaUnit}`;
+
+                } else {
+                    cards[i].innerHTML = "";
+                }
+            }
+        })
                     .catch((error) => {
                         alert(`Error fetching data: ${error}`);
                     });
