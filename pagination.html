@@ -309,7 +309,7 @@
                     let sellingPrice = item.price.toLocaleString();
                     listItems[3].textContent = `Selling Price: $${sellingPrice}`;
 
-                    listItems[4].textContent = `Lot Area: ${item.lotAreaValue} ${item.lotAreaUnit}`;
+                    listItems[4].textContent = `Lot Area: ${Math.floor(item.lotAreaValue)} ${item.lotAreaUnit}`;
 
                 } else {
                     cards[i].innerHTML = "";
