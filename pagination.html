@@ -281,6 +281,7 @@
             const pagination = document.querySelector(".pagination");
             const pageItems = document.querySelectorAll(".page-item");
             const pageLinks = document.querySelectorAll(".page-link");
+            const seeMoreButtons = document.querySelectorAll(".btn-success");
             let currentPage = 1;
 
             function fetchData() {
@@ -293,13 +294,10 @@
                 if (index < data.length) {
                     let item = data[index];
                     let listItems = cards[i].querySelectorAll("li");
-
-                   
                     let existingImage = cards[i].querySelector("img");
                     if (existingImage) {
                         cards[i].removeChild(existingImage);
                     }
-
                     let image = document.createElement("img");
                     image.src = item.imgSrc;
                     cards[i].prepend(image);
@@ -321,6 +319,54 @@
                         alert(`Error fetching data: ${error}`);
                     });
             }
+
+            seeMoreButtons.forEach(button => {
+  button.addEventListener("click", function() {
+    // Get the parent card element
+    const card = button.parentElement;
+    // Get the list element inside the card
+    const list = card.querySelector("ul");
+    // Get the list items inside the list
+    const listItems = list.querySelectorAll("li");
+    // Get the index of the card (assuming it matches the index of the data in the JSON file)
+    const index = Array.from(card.parentElement.children).indexOf(card);
+    // Check if the button is in see more or see less mode
+    const seeMore = button.textContent === "See more";
+    if (seeMore) {
+      // Fetch the data from the JSON file
+      fetch("json/data.json")
+        .then(response => response.json())
+        .then(data => {
+          // Get the data for the current card
+          const item = data[index];
+          // Create new list items for the extra data
+          const bathroomItem = document.createElement("li");
+          bathroomItem.textContent = `Street Address: ${item.streetAddress}`;
+          const bedroomItem = document.createElement("li");
+          bedroomItem.textContent = `Bedroom: ${item.bedrooms}`;
+          // Append the new list items to the list
+          list.appendChild(bathroomItem);
+          list.appendChild(bedroomItem);
+          // Change the button text
+          button.textContent = "See less";
+        })
+        .catch(error => {
+          // Handle any errors
+          alert(`Error fetching data: ${error}`);
+        });
+    } else {
+      // Remove the extra list items from the list
+      listItems.forEach((item, i) => {
+        if (i > 4) { // Only keep the first five items
+          item.remove();
+        }
+      });
+      // Change the button text and enable it
+      button.textContent = "See more";
+      button.disabled = false;
+    }
+  });
+});
 
             function updatePagination() {
                 for (let i = 0; i < pageItems.length; i++) {
