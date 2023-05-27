@@ -322,49 +322,43 @@
 
             seeMoreButtons.forEach(button => {
   button.addEventListener("click", function() {
-    // Get the parent card element
     const card = button.parentElement;
-    // Get the list element inside the card
     const list = card.querySelector("ul");
-    // Get the list items inside the list
     const listItems = list.querySelectorAll("li");
-    // Get the index of the card (assuming it matches the index of the data in the JSON file)
     const index = Array.from(card.parentElement.children).indexOf(card);
-    // Check if the button is in see more or see less mode
     const seeMore = button.textContent === "See more";
     if (seeMore) {
-      // Fetch the data from the JSON file
       fetch("json/data.json")
         .then(response => response.json())
         .then(data => {
-          // Get the data for the current card
           const item = data[index];
-          // Create new list items for the extra data
-          const bathroomItem = document.createElement("li");
-          bathroomItem.textContent = `Street Address: ${item.streetAddress}`;
+          const streetaddressroomItem = document.createElement("li");
+          streetaddressroomItem.textContent = `Street Address: ${item.streetAddress}`;
           const bedroomItem = document.createElement("li");
           bedroomItem.textContent = `Bedroom: ${item.bedrooms}`;
-          // Append the new list items to the list
-          list.appendChild(bathroomItem);
+          const bathroomItem = document.createElement("li");
+          bathroomItem.textContent = `Bathrooms: ${item.bathrooms}`;
+          const hometypeItem = document.createElement("li");
+          hometypeItem.textContent = `Home Type: ${item.homeType}`;
+          list.appendChild(streetaddressroomItem);
           list.appendChild(bedroomItem);
-          // Change the button text
+          list.appendChild(bathroomItem);
+          list.appendChild(hometypeItem);
           button.textContent = "See less";
         })
         .catch(error => {
-          // Handle any errors
           alert(`Error fetching data: ${error}`);
         });
     } else {
-      // Remove the extra list items from the list
       listItems.forEach((item, i) => {
-        if (i > 4) { // Only keep the first five items
+        if (i > 4) { 
           item.remove();
         }
       });
-      // Change the button text and enable it
       button.textContent = "See more";
       button.disabled = false;
     }
+    event.preventDefault();
   });
 });
 
