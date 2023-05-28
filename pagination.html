@@ -281,6 +281,7 @@
             const pagination = document.querySelector(".pagination");
             const pageItems = document.querySelectorAll(".page-item");
             const pageLinks = document.querySelectorAll(".page-link");
+            const seeMoreButtons = document.querySelectorAll(".btn-success");
             let currentPage = 1;
 
             function fetchData() {
@@ -293,13 +294,10 @@
                 if (index < data.length) {
                     let item = data[index];
                     let listItems = cards[i].querySelectorAll("li");
-
-                   
                     let existingImage = cards[i].querySelector("img");
                     if (existingImage) {
                         cards[i].removeChild(existingImage);
                     }
-
                     let image = document.createElement("img");
                     image.src = item.imgSrc;
                     cards[i].prepend(image);
@@ -321,6 +319,48 @@
                         alert(`Error fetching data: ${error}`);
                     });
             }
+
+            seeMoreButtons.forEach(button => {
+  button.addEventListener("click", function() {
+    const card = button.parentElement;
+    const list = card.querySelector("ul");
+    const listItems = list.querySelectorAll("li");
+    const index = Array.from(card.parentElement.children).indexOf(card);
+    const seeMore = button.textContent === "See more";
+    if (seeMore) {
+      fetch("json/data.json")
+        .then(response => response.json())
+        .then(data => {
+          const item = data[index];
+          const streetaddressroomItem = document.createElement("li");
+          streetaddressroomItem.textContent = `Street Address: ${item.streetAddress}`;
+          const bedroomItem = document.createElement("li");
+          bedroomItem.textContent = `Bedroom: ${item.bedrooms}`;
+          const bathroomItem = document.createElement("li");
+          bathroomItem.textContent = `Bathrooms: ${item.bathrooms}`;
+          const hometypeItem = document.createElement("li");
+          hometypeItem.textContent = `Home Type: ${item.homeType}`;
+          list.appendChild(streetaddressroomItem);
+          list.appendChild(bedroomItem);
+          list.appendChild(bathroomItem);
+          list.appendChild(hometypeItem);
+          button.textContent = "See less";
+        })
+        .catch(error => {
+          alert(`Error fetching data: ${error}`);
+        });
+    } else {
+      listItems.forEach((item, i) => {
+        if (i > 4) { 
+          item.remove();
+        }
+      });
+      button.textContent = "See more";
+      button.disabled = false;
+    }
+    event.preventDefault();
+  });
+});
 
             function updatePagination() {
                 for (let i = 0; i < pageItems.length; i++) {
