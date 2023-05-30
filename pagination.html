@@ -30,13 +30,6 @@
             max-width: 300px;
         }
 
-        .pagination-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 20px;
-        }
-
         .pagination {
             display: flex;
             list-style: none;
@@ -69,6 +62,22 @@
             padding: 10px;
             border: 1px solid #dee2e6;
             border-radius: 5px;
+        }
+
+        .resizable-image {
+            max-width: 100%;
+            max-height: 100%;
+            margin-bottom: 30px;
+        }
+
+        .modal-dialog {
+            width: fit-content
+        }
+
+        @media (min-width: 576px) {
+            .modal-dialog {
+                max-width: 750px;
+            }
         }
     </style>
 
@@ -109,6 +118,25 @@
                 temporibus perferendis veniam, pariatur quas voluptates?</p>
         </div>
     </div>
+    <!-- Modal -->
+
+    <div class="modal fade" id="propertyModal" tabindex="-1" aria-labelledby="propertyModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="propertyModalLabel"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img id="modalImage" src="" class="img-fluid resizable-image" alt="Property Image">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <div class="container">
         <div class="pagination-wrapper pt-1">
@@ -273,6 +301,9 @@
             </ul>
         </div>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const cards = document.querySelectorAll(".card");
@@ -301,6 +332,9 @@
                                 image.addEventListener("error", function () {
                                     image.src = "images/placeholder.jpg";
                                 });
+                                image.addEventListener("click", function () {
+                                    showModal(item.imgSrc);
+                                });
                                 cards[i].prepend(image);
                                 listItems[0].textContent = item.homeStatus ? `Home status: ${item.homeStatus}` : "";
                                 listItems[1].textContent = item.city ? `City: ${item.city}` : "";
@@ -325,47 +359,65 @@
                     });
             }
 
-            seeMoreButtons.forEach(button => {
-                button.addEventListener("click", function () {
-                    const card = button.parentElement;
-                    const list = card.querySelector("ul");
-                    const listItems = list.querySelectorAll("li");
-                    const index = Array.from(card.parentElement.children).indexOf(card);
-                    const seeMore = button.textContent === "See more";
-                    if (seeMore) {
-                        fetch("json/data.json")
-                            .then(response => response.json())
-                            .then(data => {
-                                const item = data[index];
-                                const streetaddressroomItem = document.createElement("li");
-                                streetaddressroomItem.textContent = `Street Address: ${item.streetAddress}`;
-                                const bedroomItem = document.createElement("li");
-                                bedroomItem.textContent = `Bedroom: ${item.bedrooms}`;
-                                const bathroomItem = document.createElement("li");
-                                bathroomItem.textContent = `Bathrooms: ${item.bathrooms}`;
-                                const hometypeItem = document.createElement("li");
-                                hometypeItem.textContent = `Home Type: ${item.homeType}`;
-                                list.appendChild(streetaddressroomItem);
-                                list.appendChild(bedroomItem);
-                                list.appendChild(bathroomItem);
-                                list.appendChild(hometypeItem);
-                                button.textContent = "See less";
-                            })
-                            .catch(error => {
-                                alert(`Error fetching data: ${error}`);
-                            });
+            function generateModal(item) {
+                const modalTitle = document.querySelector(".modal-title");
+                const modalBody = document.querySelector(".modal-body");
+
+                if (modalTitle && modalBody) {
+                    modalTitle.textContent = item.city ? item.city + (item.country ? ', ' + item.country : '') : "";
+                    modalBody.innerHTML = "";
+
+                    const image = document.createElement("img");
+                    image.src = item.imgSrc;
+                    image.addEventListener("error", function () {
+                        image.src = "images/placeholder.jpg";
+                    });
+                    image.classList.add("resizable-image");
+                    modalBody.appendChild(image);
+
+                    const list = document.createElement("ul");
+
+                    const homeStatusItem = document.createElement("li");
+                    homeStatusItem.textContent = item.homeStatus ? `Home status: ${item.homeStatus}` : "";
+                    list.appendChild(homeStatusItem);
+
+                    const countryItem = document.createElement("li");
+                    countryItem.textContent = item.country ? `Country: ${item.country}` : "";
+                    list.appendChild(countryItem);
+
+                    const sellingPriceItem = document.createElement("li");
+                    const sellingPrice = item.price ? `$${item.price.toLocaleString()}` : "";
+                    sellingPriceItem.textContent = `Selling Price: ${sellingPrice}`;
+                    list.appendChild(sellingPriceItem);
+
+                    const lotAreaItem = document.createElement("li");
+                    if (item.lotAreaValue !== undefined && item.lotAreaUnit !== undefined) {
+                        let roundedLotArea = parseFloat(item.lotAreaValue.toFixed(2));
+                        let lotAreaContent = Number.isNaN(roundedLotArea)
+                            ? ""
+                            : `${roundedLotArea} ${item.lotAreaUnit}`;
+                        lotAreaItem.textContent = `Lot Area: ${lotAreaContent}`;
                     } else {
-                        listItems.forEach((item, i) => {
-                            if (i > 4) {
-                                item.remove();
-                            }
-                        });
-                        button.textContent = "See more";
-                        button.disabled = false;
+                        lotAreaItem.textContent = "";
                     }
-                    event.preventDefault();
-                });
-            });
+                    list.appendChild(lotAreaItem);
+
+                    modalBody.appendChild(list);
+
+                    // Trigger the modal programmatically
+                    const propertyModal = new bootstrap.Modal(document.getElementById("propertyModal"));
+                    propertyModal.show();
+                } else {
+                    console.error("Modal elements not found.");
+                }
+            }
+
+            function showModal(imageSrc) {
+                const modalImage = document.getElementById("modalImage");
+                modalImage.src = imageSrc;
+                const propertyModal = new bootstrap.Modal(document.getElementById("propertyModal"));
+                propertyModal.show();
+            }
 
             function updatePagination() {
                 for (let i = 0; i < pageItems.length; i++) {
@@ -380,6 +432,21 @@
                     pageItems[6].classList.add("disabled");
                 }
             }
+
+            cards.forEach((card, index) => {
+                card.addEventListener("click", function () {
+                    const itemIndex = (currentPage - 1) * 3 + index;
+                    fetch("json/data.json")
+                        .then((response) => response.json())
+                        .then((data) => {
+                            const item = data[itemIndex];
+                            generateModal(item);
+                        })
+                        .catch((error) => {
+                            alert(`Error fetching data: ${error}`);
+                        });
+                });
+            });
 
             function handleClick(event) {
                 event.preventDefault();
