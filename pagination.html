@@ -19,18 +19,16 @@
             z-index: 1; 
         }
 
-/* Add a highlight line below the active nav link */
-        .nav-link::after {
-
-            content: "";
-            position: absolute;
-            bottom: 10px;
-            left: 10%;
-            width: 80%;
-            height: 5px;
-            background-color: #02F89C;
-            z-index: -1;
-        }
+        .nav-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: 10px;
+  left: 10%;
+  width: 80%;
+  height: 5px;
+  background-color: #02F89C;
+  z-index: -1;
+}
 
 
         .pagination-wrapper {
@@ -157,10 +155,10 @@
                     <a class="nav-link" href="index.html">Home</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Properties</a>
+                    <a class="nav-link active" href="#">Properties</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Agents</a>
+                    <a class="nav-link" href="agents.html">Agents</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="contact.html">Contact Us</a>
