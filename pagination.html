@@ -10,16 +10,28 @@
     <link rel="stylesheet" href="css/general.css">
     <title>Property Listings</title>
     <style>
-
-        .navbar-nav .nav-link {
-        color: black; 
-        text-decoration: none; 
+        
+        .nav-link {
+            position: relative;
+            color: #282828;
+            text-decoration: none;
+            margin: 15px;
+            z-index: 1; 
         }
 
-        .navbar-nav .nav-link:hover {
-        color: white; 
-        background-color: #04AA6D;
+/* Add a highlight line below the active nav link */
+        .nav-link::after {
+
+            content: "";
+            position: absolute;
+            bottom: 10px;
+            left: 10%;
+            width: 80%;
+            height: 5px;
+            background-color: #02F89C;
+            z-index: -1;
         }
+
 
         .pagination-wrapper {
             display: flex;
@@ -141,20 +153,20 @@
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Properties</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Agents</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact Us</a>
-                    </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Properties</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Agents</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact Us</a>
+                  </li>
                 </ul>
-            </div>
+              </div>
         </div>
     </nav>
 
