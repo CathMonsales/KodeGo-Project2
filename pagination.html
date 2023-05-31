@@ -10,6 +10,17 @@
     <link rel="stylesheet" href="css/general.css">
     <title>Property Listings</title>
     <style>
+
+        .navbar-nav .nav-link {
+        color: black; 
+        text-decoration: none; 
+        }
+
+        .navbar-nav .nav-link:hover {
+        color: white; 
+        background-color: #04AA6D;
+        }
+
         .pagination-wrapper {
             display: flex;
             flex-wrap: wrap;
@@ -74,6 +85,40 @@
             width: fit-content
         }
 
+        .modal-header {
+            background: #04AA6D;
+        }
+        
+        .modal-title {
+            font-family: Arial, sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            color: black;
+            margin-bottom: 10px;
+}
+        .modal-body {
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            color: black;
+        }
+
+        .resizable-image {
+            max-width: 80%;
+            height: auto;
+            border: 5px solid #198754;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #333;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+
         @media (min-width: 576px) {
             .modal-dialog {
                 max-width: 750px;
@@ -119,23 +164,23 @@
         </div>
     </div>
     <!-- Modal -->
-
+    
     <div class="modal fade" id="propertyModal" tabindex="-1" aria-labelledby="propertyModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="propertyModalLabel"></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <img id="modalImage" src="" class="img-fluid resizable-image" alt="Property Image">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
+          <div class="modal-content">
+            <div class="modal-header bg-success ">
+              <h5 class="modal-title text-center" id="propertyModalLabel"></h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+            <div class="modal-body text-center">
+              <img id="modalImage" src="" class="img-fluid resizable-image" alt="Property Image">
+            </div>
+            <div class="modal-footer d-flex bg-success justify-content-center">
+              <button type="button" class="btn btn-dark text-center" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
         </div>
-    </div>
+      </div>
 
 
     <div class="container">
