@@ -86,7 +86,7 @@
         }
 
         .modal-header {
-            background: #04AA6D;
+            background: #02F89C;
         }
         
         .modal-title {
@@ -103,11 +103,14 @@
         }
 
         .resizable-image {
-            max-width: 80%;
+            max-width: 90%;
             height: auto;
-            border: 5px solid #198754;
+            border: 2px solid black;
             border-radius: 10px;
             box-shadow: 0 0 10px #333;
+        }
+        .modal-footer {
+            background: #02F89C;
         }
 
         ul {
@@ -164,18 +167,18 @@
         </div>
     </div>
     <!-- Modal -->
-    
+
     <div class="modal fade" id="propertyModal" tabindex="-1" aria-labelledby="propertyModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
-            <div class="modal-header bg-success ">
+            <div class="modal-header">
               <h5 class="modal-title text-center" id="propertyModalLabel"></h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body text-center">
               <img id="modalImage" src="" class="img-fluid resizable-image" alt="Property Image">
             </div>
-            <div class="modal-footer d-flex bg-success justify-content-center">
+            <div class="modal-footer d-flex justify-content-center">
               <button type="button" class="btn btn-dark text-center" data-bs-dismiss="modal">Close</button>
             </div>
           </div>
