@@ -23,6 +23,24 @@
             flex-wrap: wrap;
             background-color:white;
         }
+        .nav-link {
+            position: relative;
+            color: #282828;
+            text-decoration: none;
+            margin: 15px;
+            z-index: 1; 
+        }
+
+        .nav-link.active::after {
+            content: "";
+            position: absolute;
+            bottom: 10px;
+            left: 10%;
+            width: 80%;
+            height: 5px;
+            background-color: #02F89C;
+            z-index: -1;
+            }
         
     </style>
 
@@ -44,10 +62,10 @@
                         <a class="nav-link" href="pagination.html">Properties</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Agents</a>
+                        <a class="nav-link" href="agents.html">Agents</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact Us</a>
+                        <a class="nav-link active" href="contact.html">Contact Us</a>
                     </li>
                 </ul>
             </div>
