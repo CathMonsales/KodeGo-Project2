@@ -58,16 +58,16 @@
         }
 
         .btn-custom {
-        background-color: #02F89C;
-        color: white;
-        border: 4px solid #02F89C;
-    }
+            background-color: #02F89C;
+            color: white;
+            border: 4px solid #02F89C;
+        }
 
-    .btn-custom:hover {
-        background-color: white;
-        color: #02F89C;
-        border: 4px solid #02F89C;
-    }
+        .btn-custom:hover {
+            background-color: white;
+            color: #02F89C;
+            border: 4px solid #02F89C;
+        }
 
         .hero-section h1 {
             position: relative;
@@ -229,16 +229,49 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 mt-5 text-center">
-                <h1 class="fs-5 text-secondary">Discover quality properties at the best market prices<br>with our assistance.</h1>
+                <h1 class="fs-5 text-secondary">Discover quality properties at the best market prices<br>with our
+                    assistance.</h1>
             </div>
             <div class="col-md-12 text-center mt-3">
                 <a href="pagination.html" class="btn btn-custom">Start now!</a>
             </div>
         </div>
     </div>
-    
-    
-    
+
+
+    <div class="container-fluid mt-5">
+        <div class="row align-items-center"> <!-- Add the "align-items-center" class to the row -->
+            <div class="col-md-6 mt-5 text-center">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2>Obtain luxury properties at the market's <span class="brand_underline">best price</span>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <!-- Carousel items will be dynamically generated here -->
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
 
 
 
@@ -278,6 +311,7 @@
                     alert(`Error fetching data: ${error}`);
                 });
         }
+
         function generateUniqueIndex(maxIndex, usedIndices) {
             let newIndex = Math.floor(Math.random() * maxIndex);
 
@@ -290,6 +324,7 @@
 
             return newIndex;
         }
+
         function setHeroImage(heroElement, photoSrc, data) {
             const fallbackImage = 'images/placeholder.jpg';
 
@@ -312,7 +347,60 @@
             img.src = photoSrc;
         }
 
-        fetchData();
+        function initializeCarousel() {
+            const carouselInner = document.querySelector(".carousel-inner");
+
+            // Clear existing carousel items
+            carouselInner.innerHTML = "";
+
+            fetch("json/data.json")
+                .then((response) => response.json())
+                .then((data) => {
+                    // Generate random indices for carousel items
+                    const randomIndices = generateRandomIndices(data.length);
+
+                    // Loop through random indices and create carousel items
+                    randomIndices.forEach((index) => {
+                        const item = document.createElement("div");
+                        item.classList.add("carousel-item");
+
+                        const image = document.createElement("img");
+                        image.src = data[index].imgSrc; // Use the imgSrc property from the data
+                        image.classList.add("d-block", "w-100");
+
+                        item.appendChild(image);
+                        carouselInner.appendChild(item);
+                    });
+
+                    // Set the first item as active
+                    carouselInner.firstChild.classList.add("active");
+                })
+                .catch((error) => {
+                    console.log("Error fetching data:", error);
+                });
+        }
+
+        function generateRandomIndices(maxLength) {
+            const indices = [];
+            const numItems = Math.min(5, maxLength);
+
+            while (indices.length < numItems) {
+                const randomIndex = Math.floor(Math.random() * maxLength);
+
+                // Ensure the index is not already in the array
+                if (!indices.includes(randomIndex)) {
+                    indices.push(randomIndex);
+                }
+            }
+
+            return indices;
+        }
+
+        // Fetch data and update hero images on page load
+        document.addEventListener("DOMContentLoaded", () => {
+            fetchData();
+            initializeCarousel();
+        });
     </script>
 </body>
 
