@@ -19,6 +19,12 @@
             z-index: 1; 
         }
 
+        .centered-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
         .nav-link.active::after {
   content: "";
   position: absolute;
@@ -234,17 +240,23 @@
             </div>
         </div>
 
-        <div class="pagination-container">
-            <ul class="pagination pb-4 pt-5">
+        <div class="centered-container">
+            <div class="pagination-container">
+              <ul class="pagination pb-4 pt-5">
                 <li class="page-item disabled"><span class="page-link">Previous</span></li>
                 <li class="page-item active"><span class="page-link">1</span></li>
                 <li class="page-item"><a class="page-link" href="#">2</a></li>
                 <li class="page-item"><a class="page-link" href="#">3</a></li>
                 <li class="page-item"><a class="page-link" href="#">4</a></li>
                 <li class="page-item"><a class="page-link" href="#">5</a></li>
+                <li class="page-item"><a class="page-link" href="#">6</a></li>
+                <li class="page-item"><a class="page-link" href="#">7</a></li>
+                <li class="page-item"><a class="page-link" href="#">8</a></li>
                 <li class="page-item"><a class="page-link" href="#">Next</a></li>
-            </ul>
-        </div>
+              </ul>
+            </div>
+          </div>
+          
 
     </div>
 
