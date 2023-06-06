@@ -84,59 +84,6 @@
             border: 1px solid #dee2e6;
             border-radius: 5px;
         }
-
-        .resizable-image {
-            max-width: 100%;
-            max-height: 100%;
-            margin-bottom: 30px;
-        }
-
-        .modal-dialog {
-            width: fit-content
-        }
-
-        .modal-header {
-            background: #02F89C;
-        }
-        
-        .modal-title {
-            font-family: Arial, sans-serif;
-            font-size: 24px;
-            font-weight: bold;
-            color: black;
-            margin-bottom: 10px;
-}
-        .modal-body {
-            font-family: Arial, sans-serif;
-            font-size: 18px;
-            color: black;
-        }
-
-        .resizable-image {
-            max-width: 90%;
-            height: auto;
-            border: 2px solid black;
-            border-radius: 10px;
-            box-shadow: 0 0 10px #333;
-        }
-        .modal-footer {
-            background: #02F89C;
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        li {
-            margin-bottom: 5px;
-        }
-
-        @media (min-width: 576px) {
-            .modal-dialog {
-                max-width: 750px;
-            }
-        }
     </style>
 
 </head>
@@ -176,25 +123,6 @@
                 temporibus perferendis veniam, pariatur quas voluptates?</p>
         </div>
     </div>
-    <!-- Modal -->
-
-    <div class="modal fade" id="propertyModal" tabindex="-1" aria-labelledby="propertyModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title text-center" id="propertyModalLabel"></h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body text-center">
-              <img id="modalImage" src="" class="img-fluid resizable-image" alt="Property Image">
-            </div>
-            <div class="modal-footer d-flex justify-content-center">
-              <button type="button" class="btn btn-dark text-center" data-bs-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
 
     <div class="container">
         <div class="pagination-wrapper pt-1">
@@ -218,7 +146,7 @@
                     <li>Currency:</li>
                     <li>Date price changed: </li>
                 </ul>
-                <a href="#" type="button" class="btn btn-success btn-sm m-1">See more</a>
+                <a href="#" class="btn btn-success btn-sm m-1">See more</a>
             </div>
 
             <div class="card">
@@ -363,119 +291,83 @@
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
         crossorigin="anonymous"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const cards = document.querySelectorAll(".card");
-            const pagination = document.querySelector(".pagination");
-            const pageItems = document.querySelectorAll(".page-item");
-            const pageLinks = document.querySelectorAll(".page-link");
-            const seeMoreButtons = document.querySelectorAll(".btn-success");
-            let currentPage = 1;
+document.addEventListener("DOMContentLoaded", function () {
+    const cards = document.querySelectorAll(".card");
+    const pagination = document.querySelector(".pagination");
+    const pageItems = document.querySelectorAll(".page-item");
+    const pageLinks = document.querySelectorAll(".page-link");
+    const seeMoreButtons = document.querySelectorAll(".btn-success");
+    let currentPage = 1;
 
-            function fetchData() {
-                fetch("json/data.json")
-                    .then((response) => response.json())
-                    .then((data) => {
-                        console.log(data);
-                        for (let i = 0; i < cards.length; i++) {
-                            let index = (currentPage - 1) * 3 + i;
-                            if (index < data.length) {
-                                let item = data[index];
-                                let listItems = cards[i].querySelectorAll("li");
-                                let existingImage = cards[i].querySelector("img");
-                                if (existingImage) {
-                                    cards[i].removeChild(existingImage);
-                                }
-                                let image = document.createElement("img");
-                                image.src = item.imgSrc;
-                                image.addEventListener("error", function () {
-                                    image.src = "images/placeholder.jpg";
-                                });
-                                image.addEventListener("click", function () {
-                                    showModal(item.imgSrc);
-                                });
-                                cards[i].prepend(image);
-                                listItems[0].textContent = item.homeStatus ? `Home status: ${item.homeStatus}` : "";
-                                listItems[1].textContent = item.city ? `City: ${item.city}` : "";
-                                listItems[2].textContent = item.country ? `Country: ${item.country}` : "";
-
-                                let sellingPrice = item.price ? `$${item.price.toLocaleString()}` : "";
-                                listItems[3].textContent = `Selling Price: ${sellingPrice}`;
-
-                                listItems[4].style.display = (item.lotAreaValue !== undefined && item.lotAreaUnit !== undefined) ? "list-item" : "none";
-                                if (item.lotAreaValue !== undefined && item.lotAreaUnit !== undefined) {
-                                    let roundedLotArea = parseFloat(item.lotAreaValue.toFixed(2));
-                                    let lotAreaContent = Number.isNaN(roundedLotArea) ? "" : `${roundedLotArea} ${item.lotAreaUnit}`;
-                                    listItems[4].textContent = `Lot Area: ${lotAreaContent}`;
-                                } else {
-                                    listItems[4].textContent = "";
-                                }
-                            }
+    function fetchData() {
+        fetch("json/data.json")
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                for (let i = 0; i < cards.length; i++) {
+                    let index = i;
+                    if (index < data.length) {
+                        let item = data[index];
+                        let listItems = cards[i].querySelectorAll("li");
+                        let existingImage = cards[i].querySelector("img");
+                        if (existingImage) {
+                            cards[i].removeChild(existingImage);
                         }
-                    })
-                    .catch((error) => {
-                        alert(`Error fetching data: ${error}`);
-                    });
-            }
+                        let image = document.createElement("img");
+                        image.src = item.imgSrc;
+                        image.addEventListener("error", function () {
+                            image.src = "images/placeholder.jpg";
+                        });
+                        image.addEventListener("click", function () {
+                            showModal(item.imgSrc);
+                        });
+                        cards[i].prepend(image);
+                        listItems[0].textContent = item.homeStatus ? `Home status: ${item.homeStatus}` : "";
+                        listItems[1].textContent = item.city ? `City: ${item.city}` : "";
+                        listItems[2].textContent = item.country ? `Country: ${item.country}` : "";
 
-            function generateModal(item) {
-                const modalTitle = document.querySelector(".modal-title");
-                const modalBody = document.querySelector(".modal-body");
+                        let sellingPrice = item.price ? `$${item.price.toLocaleString()}` : "";
+                        listItems[3].textContent = `Selling Price: ${sellingPrice}`;
 
-                if (modalTitle && modalBody) {
-                    modalTitle.textContent = item.city ? item.city + (item.country ? ', ' + item.country : '') : "";
-                    modalBody.innerHTML = "";
-
-                    const image = document.createElement("img");
-                    image.src = item.imgSrc;
-                    image.addEventListener("error", function () {
-                        image.src = "images/placeholder.jpg";
-                    });
-                    image.classList.add("resizable-image");
-                    modalBody.appendChild(image);
-
-                    const list = document.createElement("ul");
-
-                    const homeStatusItem = document.createElement("li");
-                    homeStatusItem.textContent = item.homeStatus ? `Home status: ${item.homeStatus}` : "";
-                    list.appendChild(homeStatusItem);
-
-                    const countryItem = document.createElement("li");
-                    countryItem.textContent = item.country ? `Country: ${item.country}` : "";
-                    list.appendChild(countryItem);
-
-                    const sellingPriceItem = document.createElement("li");
-                    const sellingPrice = item.price ? `$${item.price.toLocaleString()}` : "";
-                    sellingPriceItem.textContent = `Selling Price: ${sellingPrice}`;
-                    list.appendChild(sellingPriceItem);
-
-                    const lotAreaItem = document.createElement("li");
-                    if (item.lotAreaValue !== undefined && item.lotAreaUnit !== undefined) {
-                        let roundedLotArea = parseFloat(item.lotAreaValue.toFixed(2));
-                        let lotAreaContent = Number.isNaN(roundedLotArea)
-                            ? ""
-                            : `${roundedLotArea} ${item.lotAreaUnit}`;
-                        lotAreaItem.textContent = `Lot Area: ${lotAreaContent}`;
-                    } else {
-                        lotAreaItem.textContent = "";
+                        listItems[4].style.display = (item.lotAreaValue !== undefined && item.lotAreaUnit !== undefined) ? "list-item" : "none";
+                        if (item.lotAreaValue !== undefined && item.lotAreaUnit !== undefined) {
+                            let roundedLotArea = parseFloat(item.lotAreaValue.toFixed(2));
+                            let lotAreaContent = Number.isNaN(roundedLotArea) ? "" : `${roundedLotArea} ${item.lotAreaUnit}`;
+                            listItems[4].textContent = `Lot Area: ${lotAreaContent}`;
+                        } else {
+                            listItems[4].textContent = "";
+                        }
+                        
+                        
+                        seeMoreButtons[i].setAttribute("data-id", item.zpid);
                     }
-                    list.appendChild(lotAreaItem);
-
-                    modalBody.appendChild(list);
-
-                    // Trigger the modal programmatically
-                    const propertyModal = new bootstrap.Modal(document.getElementById("propertyModal"));
-                    propertyModal.show();
-                } else {
-                    console.error("Modal elements not found.");
                 }
-            }
-
-            function showModal(imageSrc) {
-                const modalImage = document.getElementById("modalImage");
-                modalImage.src = imageSrc;
-                const propertyModal = new bootstrap.Modal(document.getElementById("propertyModal"));
-                propertyModal.show();
-            }
+            })
+            .catch((error) => {
+                alert(`Error fetching data: ${error}`);
+            });
+    }
+    
+    function redirectToPropertyPage(propertyId) {
+  fetch("json/data.json")
+    .then((response) => response.json())
+    .then((data) => {
+      let propertyData = data.find((item) => item.zpid == propertyId);
+      window.location.href = `Singlepage.html?zpid=${propertyId}&data=${JSON.stringify(propertyData)}`;
+    })
+    .catch((error) => {
+      alert(`Error fetching data: ${error}`);
+    });
+}
+    
+    for (let i = 0; i < seeMoreButtons.length; i++) {
+        seeMoreButtons[i].addEventListener("click", function () {
+            let propertyId = seeMoreButtons[i].getAttribute("data-id");
+            redirectToPropertyPage(propertyId);
+        });
+    }
+    fetchData();
+});
 
             function updatePagination() {
                 for (let i = 0; i < pageItems.length; i++) {
@@ -490,21 +382,6 @@
                     pageItems[6].classList.add("disabled");
                 }
             }
-
-            cards.forEach((card, index) => {
-                card.addEventListener("click", function () {
-                    const itemIndex = (currentPage - 1) * 3 + index;
-                    fetch("json/data.json")
-                        .then((response) => response.json())
-                        .then((data) => {
-                            const item = data[itemIndex];
-                            generateModal(item);
-                        })
-                        .catch((error) => {
-                            alert(`Error fetching data: ${error}`);
-                        });
-                });
-            });
 
             function handleClick(event) {
                 event.preventDefault();
@@ -530,7 +407,6 @@
 
             fetchData();
             updatePagination();
-        });
     </script>
 
 </body>
