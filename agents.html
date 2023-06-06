@@ -5,31 +5,110 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-        <link rel="stylesheet" href="css/general.css">
-    <title>StayBnb</title>
+    <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://kit.fontawesome.com/572c759e4b.js" crossorigin="anonymous"></script>
+
+    <title>Contact Us</title>
+    <link rel="icon" type="image/x-icon" href="/images/icon.png">
 
     <style>
-        .nav-link {
-            position: relative;
-            color: #282828;
-            text-decoration: none;
-            margin: 15px;
-            z-index: 1; 
+        body {
+            color: black;
+            background-image: linear-gradient(to bottom right, rgb(0, 255, 149), rgb(217, 217, 217))
         }
 
-        .nav-link.active::after {
-            content: "";
+        main {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            flex-wrap: wrap;
+            background-color: white;
+        }
+
+        .agents .box-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        .agents .box-container .box {
+            background: #fff;
+            text-align: center;
+            border: .1rem solid rgba(0, 0, 0, .2);
+            box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+            border-radius: .5rem;
+            padding: 2rem;
+            position: relative;
+            width: 26rem;
+        }
+
+        .agents .box-container .box .fa-envelope {
             position: absolute;
-            bottom: 10px;
-            left: 10%;
-            width: 80%;
-            height: 5px;
-            background-color: #02F89C;
-            z-index: -1;
-            }
+            top: 1.8rem;
+            left: 2rem;
+            color: #333;
+            font-size: 2rem;
+        }
+
+        .agents .box-container .box .fa-envelope:hover {
+            color: var(--red);
+        }
+
+        .agents .box-container .box .fa-phone {
+            position: absolute;
+            top: 1.8rem;
+            right: 2rem;
+            color: #333;
+            font-size: 2rem;
+        }
+
+        .agents .box-container .box .fa-phone:hover {
+            color: var(--red);
+        }
+
+        .agents .box-container .box img {
+            border-radius: 50%;
+            box-shadow: 0 0 0 .5rem rgba(0, 0, 0, .1);
+            object-fit: cover;
+            height: 10rem;
+            width: 10rem;
+            margin: 1rem 0;
+        }
+
+        .agents .box-container .box h3 {
+            font-size: 2rem;
+            color: #333;
+        }
+
+        .agents .box-container .box span {
+            font-size: 1.7rem;
+            color: var(--red);
+        }
+
+        .agents .box-container .box .share {
+            padding-top: 2rem;
+        }
+
+        .agents .box-container .box .share a {
+            margin: 0 .3rem;
+            height: 4rem;
+            width: 4rem;
+            line-height: 4rem;
+            background: #f7f7f7;
+            color: #666;
+            border-radius: .5rem;
+            font-size: 2rem;
+        }
+
+        .agents .box-container .box .share a:hover {
+            background: var(--red);
+            color: #fff;
+        }
     </style>
+
 </head>
 
 <body>
@@ -49,21 +128,122 @@
                         <a class="nav-link" href="pagination.html">Properties</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Agents</a>
+                        <a class="nav-link" href="agents.html">Agents</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="contact.html">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="booking.html">Book a view</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
+    <section class="agents" id="agents">
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-        crossorigin="anonymous"></script>
-    <script src="js/main.js"></script>
+        <h1 class="heading" style="text-align: center;">Agents</h1>
+
+
+        <div class="box-container">
+
+            <div class="box">
+                <a href="#" class="fas fa-envelope"></a>
+                <a href="#" class="fas fa-phone"></a>
+                <img src="images/JM.png" alt="">
+                <h3>John Matthew Sola</h3>
+                <span>Creative Marketing</span>
+                <div class="share">
+                    <a href="#" class="fab fa-facebook-f"></a>
+                    <a href="#" class="fab fa-twitter"></a>
+                    <a href="#" class="fab fa-instagram"></a>
+                    <a href="#" class="fab fa-linkedin"></a>
+                </div>
+            </div>
+
+            <div class="box">
+                <a href="#" class="fas fa-envelope"></a>
+                <a href="#" class="fas fa-phone"></a>
+                <img src="images/AC.png" alt="">
+                <h3>Aldrin Cardeño</h3>
+                <span>Senior Property Specialist</span>
+                <div class="share">
+                    <a href="#" class="fab fa-facebook-f"></a>
+                    <a href="#" class="fab fa-twitter"></a>
+                    <a href="#" class="fab fa-instagram"></a>
+                    <a href="#" class="fab fa-linkedin"></a>
+                </div>
+            </div>
+
+            <div class="box">
+                <a href="#" class="fas fa-envelope"></a>
+                <a href="#" class="fas fa-phone"></a>
+                <img src="images/MP.png" alt="">
+                <h3>Melvin Pelegrina</h3>
+                <span>Assistant Sales Manager</span>
+                <div class="share">
+                    <a href="#" class="fab fa-facebook-f"></a>
+                    <a href="#" class="fab fa-twitter"></a>
+                    <a href="#" class="fab fa-instagram"></a>
+                    <a href="#" class="fab fa-linkedin"></a>
+                </div>
+            </div>
+
+            <div class="box">
+                <a href="#" class="fas fa-envelope"></a>
+                <a href="#" class="fas fa-phone"></a>
+                <img src="images/CM.png" alt="">
+                <h3>Catherine Monsales</h3>
+                <span>Junior Property Specialist</span>
+                <div class="share">
+                    <a href="#" class="fab fa-facebook-f"></a>
+                    <a href="#" class="fab fa-twitter"></a>
+                    <a href="#" class="fab fa-instagram"></a>
+                    <a href="#" class="fab fa-linkedin"></a>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer class="p-3 mt-5 border-top bg-light">
+        <div class="row">
+            <div class="col-md-5">
+                <img src="images/staybnb.png" width="200" class="ml-5">
+            </div>
+
+            <div class="col-md-2">
+                <h5>Home</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Properties</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Agents</a></li>
+                    <li class="nav-item mb-2"><a href="" class="nav-link p-0 text-body-secondary">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-2">
+                <h5>Account</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Register</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Login</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-2">
+                <h5>Company</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About Us</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Property</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Privacy Police</a>
+                    </li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Term of Policy</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>
