@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/general.css">
+    <script src="https://kit.fontawesome.com/572c759e4b.js" crossorigin="anonymous"></script>
+    <title>Contact Us</title>
+    <link rel="icon" type="image/x-icon" href="/images/icon.png">
+
+    <style>
+        body {
+            color: black;
+            background-image: linear-gradient(to bottom right,  rgb(0, 255, 149), rgb(217, 217, 217))
+        }
+
+        main {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            flex-wrap: wrap;
+            background-color:white;
+        }
+        
+    </style>
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <img src="images/staybnb.png" width="150px" class="navbar-brand p-2" href="index.html">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pagination.html">Properties</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="agents.html">Agents</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="booking.html">Book a view</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main class="container">
+        <div class="row" style="margin-top: 50px;">
+            <div class="col-sm-8 p-5">
+                <h1>Book With Us</h1>
+                <small>Contact us and an agent will reach out to assist you within day</small>
+                <div class="col-md-6 py-3 py-md-0">
+                    <form action="#">
+        
+                      <input type="text" class="form-control" placeholder="Where To" required><br>
+                      <input type="text" class="form-control" placeholder="How Many" required><br>
+                      <input type="date" class="form-control" placeholder="Arrivals" required><br>
+                      <input type="date" class="form-control" placeholder="Leaving" required><br>
+                      <textarea class="form-control" rows="5" name="text" placeholder="Enter Your Name & Details"></textarea>
+                      <br>
+                      <button class="submit" onclick="window.location.href='booked.html'">Book Now</button>
+
+                      
+                    </form>
+                  </div>
+            </div>
+            <div class="col-sm-4 p-3 bg-dark text-white">
+                <h1>Info</h1>
+                <div class="icon-container m-3">
+                    <i class="fas fa-envelope"></i>
+                    <span class="email"> staybnb@gmail.com</span>
+                </div>
+                <div class="icon-container m-3">
+                    <i class="fas fa-phone"></i>
+                    <span class="phone"> 555-555-555</span>
+                </div>
+                <div class="icon-container m-3">
+                    <i class="fas fa-city"></i>
+                    <span class="address"> 88 Melbourne St.</span>
+                </div>
+                <div class="icon-container m-3">
+                    <i class="fas fa-clock"></i>
+                    <span class="time"> 09:00 - 18:00</span>
+                </div>
+                <div class="icon-container m-3">
+                    <i class="fa-brands fa-facebook"></i>
+                    <span>facebook.com/staybnb</span>
+                </div>
+                <div class="icon-container m-3">
+                    <i class="fa-brands fa-twitter"></i>
+                    <span>twitter.com/staybnb</span>
+                </div>
+            </div>
+        </div>
+
+        <iframe src="https://www.google.com/maps/d/embed?mid=12hizppNiPIaocOcgRem1wouRMjywmis&ehbc=2E312F" width="640" height="480"></iframe>
+
+    </main>
+    <footer class="p-3 mt-5 border-top bg-light">
+        <div class="row">
+            <div class="col-md-5">
+                <img src="images/staybnb.png" width="200" class="ml-5">
+            </div>
+    
+            <div class="col-md-2">
+                <h5>Home</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Properties</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Agents</a></li>
+                    <li class="nav-item mb-2"><a href="" class="nav-link p-0 text-body-secondary">Contact Us</a></li>
+                </ul>
+            </div>
+    
+            <div class="col-md-2">
+                <h5>Account</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Register</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Login</a></li>
+                </ul>
+            </div>
+    
+            <div class="col-md-2">
+                <h5>Company</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About Us</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Property</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Privacy Police</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Term of Policy</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
