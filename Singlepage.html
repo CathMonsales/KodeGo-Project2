@@ -6,78 +6,112 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Property Listings</title>
+  <link rel="icon" type="image/x-icon" href="/images/icon.png">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
   <style>
-            body {
-            color: black;
-            background-image: linear-gradient(to bottom right,  rgb(0, 255, 149), rgb(217, 217, 217))
-        }
-        .nav-link {
-            position: relative;
-            color: #282828;
-            text-decoration: none;
-            margin: 15px;
-            z-index: 1; 
-        }
+    body {
+      color: black;
+      background-color: rgb(245, 245, 245);
+    }
+    .nav-link {
+      position: relative;
+      color: #282828;
+      text-decoration: none;
+      margin: 15px;
+      z-index: 1; 
+    }
+    .nav-link.active::after {
+      content: "";
+      position: absolute;
+      bottom: 10px;
+      left: 10%;
+      width: 80%;
+      height: 5px;
+      background-color: #02F89C;
+      z-index: -1;
+    }       
+    .container {
+      margin: 20px auto;
+      padding: 20px;
+      max-width: 800px;
+    }
 
-        .nav-link.active::after {
-            content: "";
-            position: absolute;
-            bottom: 10px;
-            left: 10%;
-            width: 80%;
-            height: 5px;
-            background-color: #02F89C;
-            z-index: -1;
-        }
-        .container {
-  margin: 20px auto;
-  padding: 20px;
-  max-width: 800px;
-}
+    /* Center the title and make it bigger and bolder */
+    #property-title {
+      text-align: center;
+      font-size: 36px;
+      font-weight: bold;
+    }
 
-/* Center the title and make it bigger and bolder */
-#property-title {
-  text-align: center;
-  font-size: 36px;
-  font-weight: bold;
-}
+    /* Make the image responsive and add a border and a shadow */
+    #property-image {
+      width: 100%;
+      height: auto;
+      padding: 10px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.1);
+      border-radius: 15px;
+      box-shadow: 10px 10px 5px rgb(104, 132, 141);
+    }
 
-/* Make the image responsive and add a border and a shadow */
-#property-image {
-  width: 100%;
-  height: auto;
-  border: 5px solid #eee;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
+    /* Center the div and make it a flex container */
+    #property-details {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
 
-/* Center the div and make it a flex container */
-#property-details {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+    }
 
-/* Style the span elements with some spacing and borders */
-#property-details span {
-  display: inline-block;
-  padding: 10px;
-  margin: 10px;
-  border: 1px solid #eee;
-}
+    /* Style the span elements with some spacing and borders */
+    #property-details span {
+      display: inline-block;
+      padding: 10px;
+      margin: 10px;
+      border: 1px solid #eee;
+    }
+    
+    #back-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 3px;
+      font-size: 10px;
+      padding: 5px 28px;
+    }
+    #more {display: none;}
 
-#back-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+    .button {
+      display: inline-block;
+      font-size: 16px;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      outline: none;
+      color: #000000;
+      background-color: #2be0d7;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 5px #999;
+    }
+
+    .button:hover {background-color: #5cffce}
+
+    .button:active {
+      background-color: #5cffce;
+      box-shadow: 0 5px #666;
+      transform: translateY(4px);
+    }
+    #contactAgent {
+      border-radius: 5px;
+      box-shadow: 5px 5px 5px rgb(104, 132, 141);
+    }
   </style>
 </head>
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
+    <div class="container-fluid">
         <img src="images/staybnb.png" width="150px" class="navbar-brand p-2" href="index.html">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -85,61 +119,110 @@
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="index.html">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" href="#">Properties</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="agents.html">Agents</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="contact.html">Contact Us</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="booking.html">Book a view</a>
-            </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="pagination.html">Properties</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="agents.html">Agents</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact Us</a>
+                </li>
             </ul>
-          </div>
+        </div>
     </div>
-</nav>
-
-
-
-<div class="container">
-  <div class="row">
-    <div class="col-12">
-      <img id="property-image" src="" alt="Card image">
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-12">
-      <h1 id="property-title"></h1>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-12">
-      <!-- Use a div instead of a ul -->
-
-      <div id="property-details">
-        <p>Home status: <span id="home-status"></span></p>
-        <p>City: <span class="icon-pin ::before " id="city"></span></p>
-        <p>Country: <span id="country"></span></p>
-        <p>Price: <span id="price"></span></p>
-        <p>Lot area: <span id="lot-area"></span></p>
+  </nav>
+  <!-- Add a button element with an onclick attribute -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-2">
+        <button id="back-button" class="btn btn btn-outline-success m-2 text-center" onclick="goBack()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+          </svg>
+          Back 
+        </button>
       </div>
     </div>
   </div>
 
-</div>
-  <!-- Add a button element with an onclick attribute -->
-  <div class="row">
-    <div class="col-12">
-      <button id="back-button" class="btn btn-success btn-sm m-1" onclick="goBack()">Go back to property list</button>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <img id="property-image" src="" alt="Card image">
+      </div>
     </div>
   </div>
-</div>
+
+  <div class="container">
+    <div class="col-12">
+      <h1 id="property-title"></h1>
+    </div>
+  </div>
+  <!-- Description -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-8">
+        <h5>Description:</h5>
+        <p>Welcome to your dream home, a magnificent house and lot that embodies elegance, luxury, and unparalleled comfort. Nestled in a highly desirable location, this property offers a lifestyle of sophistication and tranquility, making it the perfect sanctuary for you and your family.
+          As you approach the property, you'll be captivated by its impeccable curb appeal and lush landscaping. Step inside and <span id="dots">...</span>          <span id="more">
+          experience the grandeur of the spacious living areas, designed to provide a seamless blend of style and functionality. The open floor plan allows for effortless flow and creates an inviting atmosphere for both entertaining guests and everyday living.
+          The gourmet kitchen is a masterpiece, featuring top-of-the-line appliances, high-quality finishes, and ample counter and storage space. It is a haven for culinary enthusiasts, offering the perfect setting to prepare delectable meals and gather with loved ones. Adjacent to the kitchen is an elegant dining area, ideal for hosting memorable dinner parties or enjoying intimate family meals.
+          This house boasts an impressive number of bedrooms, ensuring that each family member can enjoy their own private retreat. The bedrooms are generously proportioned, filled with natural light, and thoughtfully designed to create a peaceful ambiance. The master suite is a luxurious haven, complete with a spa-like ensuite bathroom, providing the ultimate space for relaxation and rejuvenation.
+          Step outside and discover an oasis of tranquility in the meticulously landscaped backyard. Whether you envision hosting unforgettable outdoor gatherings, creating a serene garden retreat, or simply enjoying peaceful moments in nature, this outdoor space offers endless possibilities.
+          Conveniently located, this property provides easy access to a range of amenities, including renowned schools, shopping centers, recreational facilities, and major transportation routes. Experience the best of both worlds - a peaceful sanctuary away from the hustle and bustle, yet close enough to everything you need for a convenient lifestyle.
+          Don't miss the opportunity to make this exquisite house and lot your forever home. Embrace a lifestyle of luxury, comfort, and elegance. Contact us today to schedule a viewing and begin the journey towards owning your dream property.
+          </span>
+        </p>
+        <button onclick="myFunction()" id="readMore">Read more...</button>
+      </div>
+      <div class="col-4 border border-3" id="contactAgent">
+        <div class="col-md-2">
+          <img src="images/staybnb.png" width="70" class="ml-5">
+        </div>
+        <h3 class="text-center">Contact Agent</h3>
+        <form action="/action_page.php">
+          <div class="form-floating mb-3 mt-3">
+            <input type="text" class="form-control" id="firstName" placeholder="First Name" name="firstName">
+            <label for="firstName">First Name</label>
+          </div>
+          <div class="form-floating mt-3 mb-3">
+            <input type="text" class="form-control" id="lastname" placeholder="Last Name" name="lastname">
+            <label for="lastname">Last Name</label>
+          </div>
+          <div class="form-floating mt-3 mb-3">
+            <input type="tel" class="form-control" id="phonenumber" placeholder="Phone Number" name="phone">
+            <label for="phone">Phone Number</label>
+          </div>
+          <div class="form-floating mt-3 mb-3">
+            <input type="text" class="form-control" id="email" placeholder="Last Name" name="email">
+            <label for="email">Last Name</label>
+          </div>
+          <div class="d-grid gap-2 col-6 mx-auto m-2">
+            <button type="submit" class="btn btn-dark btn-block">Contact Agent</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- Property Details -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <!-- Use a div instead of a ul -->  
+        <div class="row" id="property-details">
+          <p>Home status: <span id="home-status"></span></p>
+          <p>City: <span class="icon-pin ::before" id="city"></span></p>
+          <p>Country: <span id="country"></span></p>
+          <p>Price: <span id="price"></span></p>
+          <p>Lot area: <span id="lot-area"></span></p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <footer class="p-3 mt-5 border-top bg-light">
     <div class="row">
@@ -152,7 +235,7 @@
             <ul class="nav flex-column">
                 <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Properties</a></li>
                 <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Agents</a></li>
-                <li class="nav-item mb-2"><a href="" class="nav-link p-0 text-body-secondary">Contact Us</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Contact Us</a></li>
             </ul>
         </div>
 
@@ -174,57 +257,76 @@
             </ul>
         </div>
     </div>
-</footer>
-    <script>
+  </footer> 
+  
+  <script>
+    const jsonUrl = "json/data.json";
+    const zpid = new URLSearchParams(window.location.search).get("zpid");
+    const propertyTitle = document.querySelector("#property-title");
+    const propertyImage = document.querySelector("#property-image");
+    const propertyDetails = document.querySelector("#property-details");
 
-const jsonUrl = "json/data.json";
-const zpid = new URLSearchParams(window.location.search).get("zpid");
-const propertyTitle = document.querySelector("#property-title");
-const propertyImage = document.querySelector("#property-image");
-const propertyDetails = document.querySelector("#property-details");
+    function fetchData() {
+      fetch(jsonUrl)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          let item = data.find((item) => item.zpid == zpid);
+          if (item) {
+            propertyTitle.textContent = item.homeStatus
+              ? `${item.city}, ${item.country}`
+              : `${item.city}, ${item.country}`;
+            propertyImage.src = item.imgSrc;
+            propertyDetails.innerHTML = `
+              <li>${
+                item.homeStatus ? `Home Status: ${item.homeStatus}` : ""
+              }</li>
+              <li>Bedrooms: ${item.bedrooms}</li>
+              <li>Bathrooms: ${item.bathrooms}</li>
+              <li>City: ${item.city}</li>
+              <li>State: ${item.state}</li>
+              <li>Country: ${item.country}</li>
+              <li>${
+                item.price
+                  ? `Selling Price: $${item.price.toLocaleString()}`
+                  : "Selling Price: N/A"
+              }</li>
+              <li>${
+                item.lotAreaValue !== undefined && item.lotAreaUnit !== undefined
+                  ? `Lot Area: ${item.lotAreaValue} ${item.lotAreaUnit}`
+                  : "Lot Area: N/A"
+              }</li>
+            `;
+          } else {
+            alert("No property found with that zpid.");
+          }
+        })
+        .catch((error) => {
+          alert(`Error fetching data: ${error}`);
+        });
+    }
 
-function fetchData() {
-  fetch(jsonUrl)
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-      let item = data.find((item) => item.zpid == zpid);
-      if (item) {
-        propertyTitle.textContent = item.homeStatus
-          ? `${item.homeStatus} in ${item.city}, ${item.country}`
-          : `${item.city}, ${item.country}`;
-        propertyImage.src = item.imgSrc;
-        propertyDetails.innerHTML = `
-          <li>${
-            item.homeStatus ? `Home Status: ${item.homeStatus}` : ""
-          }</li>
-          <li>City: ${item.city}</li>
-          <li>Country: ${item.country}</li>
-          <li>${
-            item.price
-              ? `Selling Price: $${item.price.toLocaleString()}`
-              : "Selling Price: N/A"
-          }</li>
-          <li>${
-            item.lotAreaValue !== undefined && item.lotAreaUnit !== undefined
-              ? `Lot Area: ${item.lotAreaValue} ${item.lotAreaUnit}`
-              : "Lot Area: N/A"
-          }</li>
-        `;
+    fetchData();
+
+    function goBack() {
+      window.location.href = 'pagination.html';
+    }
+
+    function myFunction() {
+      var dots = document.getElementById("dots");
+      var moreText = document.getElementById("more");
+      var btnText = document.getElementById("readMore");
+
+      if (dots.style.display === "none") {
+        dots.style.display = "inline";
+        btnText.innerHTML = "Read More..."; 
+        moreText.style.display = "none";
       } else {
-        alert("No property found with that zpid.");
+        dots.style.display = "none";
+        btnText.innerHTML = "Read Less..."; 
+        moreText.style.display = "inline";
       }
-    })
-    .catch((error) => {
-      alert(`Error fetching data: ${error}`);
-    });
-}
-
-fetchData();
-
-function goBack() {
-  window.location.href = 'pagination.html';
-}
-    </script>
-  </body>
+    }
+  </script>
+</body>
 </html>
