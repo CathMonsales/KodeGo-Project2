@@ -208,7 +208,8 @@
                 const docRef = await addDoc(collection(db, "contacts"), {
                     name: name,
                     email: email,
-                    message: message
+                    message: message,
+                    contacted: false
                 });
 
                 // Reset form after successful submission
