@@ -15,17 +15,22 @@
     <link rel="icon" type="image/x-icon" href="/images/icon.png">
 
     <style>
+        html,
         body {
-            color: black;
-            background-image: linear-gradient(to bottom right, rgb(0, 255, 149), rgb(217, 217, 217))
+          height: 100%;
+          margin: 0;
+          padding: 0;
         }
-
-        main {
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-            flex-wrap: wrap;
-            background-color: white;
+    
+        .boxed {
+          min-height: 66.5%;
         }
-
+    
+        footer {
+          margin-top: auto;
+        }
+    
+    
         .nav-link {
             position: relative;
             color: #282828;
@@ -33,7 +38,7 @@
             margin: 3px;
             z-index: 1;
         }
-
+    
         .nav-link.active::after {
             content: "";
             position: absolute;
@@ -44,13 +49,13 @@
             background-color: #02F89C;
             z-index: -1;
         }
-
+    
         .brand_underline {
             position: relative;
             display: inline-block;
             z-index: 1;
         }
-
+    
         .brand_underline::after {
             content: "";
             position: absolute;
@@ -63,6 +68,7 @@
             z-index: -1;
         }
     </style>
+    
 
 </head>
 
@@ -96,7 +102,7 @@
         </div>
     </nav>
 
-    <main class="container">
+    <main class="container boxed">
         <div class="row" style="margin-top: 50px;">
             <div class="col-sm-8 p-5">
                 <h1><span class="brand_underline">Contact</span> Us</h1>
@@ -121,7 +127,7 @@
                 </div>
             </div>
             <div class="col-sm-4 p-5">
-                <h4>StayBnB Office</h4>
+                <h1>StayBnB Office</h1>
                 <p>123 Main Street, City</p>
                 <p>State, Country</p>
                 <p>Email: info@staybnb.com</p>
@@ -191,8 +197,8 @@
             appId: "1:474414165470:web:397c698ac971b8d09c814f"
         };
 
-         // Initialize Firebase
-         const app = initializeApp(firebaseConfig);
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
         var bookingForm = document.getElementById("contact-form");
