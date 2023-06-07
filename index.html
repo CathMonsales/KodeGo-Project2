@@ -558,65 +558,83 @@
         }
 
         document.addEventListener("DOMContentLoaded", function () {
-            const cards = document.querySelectorAll(".card");
-            const pagination = document.querySelector(".pagination");
-            const pageItems = document.querySelectorAll(".page-item");
-            const pageLinks = document.querySelectorAll(".page-link");
-            const seeMoreButtons = document.querySelectorAll(".btn-success");
-            let currentPage = 1;
+  const cards = document.querySelectorAll(".card");
+  const pagination = document.querySelector(".pagination");
+  const pageItems = document.querySelectorAll(".page-item");
+  const pageLinks = document.querySelectorAll(".page-link");
+  const seeMoreButtons = document.querySelectorAll(".btn-success");
+  let currentPage = 1;
 
-            function fetchData() {
-                fetch("json/data.json")
-                    .then((response) => response.json())
-                    .then((data) => {
-                        console.log(data);
-                        let startIndex = (currentPage - 1) * cards.length;
-                        let endIndex = Math.min(startIndex + cards.length, data.length);
+  function fetchData() {
+    fetch("json/data.json")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        let randomizedData = shuffleArray(data);
 
-                        for (let i = 0; i < cards.length; i++) {
-                            let index = (currentPage - 1) * cards.length + i; // adjust for current page
-                            if (index < data.length) {
-                                let item = data[index];
-                                let listItems = cards[i].querySelectorAll("li");
-                                let existingImage = cards[i].querySelector("img");
-                                if (existingImage) {
-                                    cards[i].removeChild(existingImage);
-                                }
-                                let image = document.createElement("img");
-                                image.src = item.imgSrc;
-                                image.addEventListener("error", function () {
-                                    image.src = "images/placeholder.jpg";
-                                });
-                                image.addEventListener("click", function () {
-                                    showModal(item.imgSrc);
-                                });
-                                cards[i].prepend(image);
-                                listItems[0].textContent = item.homeStatus ? `Home status: ${item.homeStatus}` : "";
-                                listItems[1].textContent = item.city ? `City: ${item.city}` : "";
-                                listItems[2].textContent = item.country ? `Country: ${item.country}` : "";
+        let startIndex = (currentPage - 1) * cards.length;
+        let endIndex = Math.min(startIndex + cards.length, randomizedData.length);
 
-                                let sellingPrice = item.price ? `$${item.price.toLocaleString()}` : "";
-                                listItems[3].textContent = `Selling Price: ${sellingPrice}`;
-
-                                listItems[4].style.display = (item.lotAreaValue !== undefined && item.lotAreaUnit !== undefined) ? "list-item" : "none";
-                                if (item.lotAreaValue !== undefined && item.lotAreaUnit !== undefined) {
-                                    let roundedLotArea = parseFloat(item.lotAreaValue.toFixed(2));
-                                    let lotAreaContent = Number.isNaN(roundedLotArea) ? "" : `${roundedLotArea} ${item.lotAreaUnit}`;
-                                    listItems[4].textContent = `Lot Area: ${lotAreaContent}`;
-                                } else {
-                                    listItems[4].textContent = "";
-                                }
-
-
-                                seeMoreButtons[i].setAttribute("data-id", item.zpid);
-                            }
-                        }
-
-                    })
-                    .catch((error) => {
-                        alert(`Error fetching data: ${error}`);
-                    });
+        for (let i = 0; i < cards.length; i++) {
+          let index = (currentPage - 1) * cards.length + i; 
+          if (index < randomizedData.length) {
+            let item = randomizedData[index];
+            let listItems = cards[i].querySelectorAll("li");
+            let existingImage = cards[i].querySelector("img");
+            if (existingImage) {
+              cards[i].removeChild(existingImage);
             }
+            let image = document.createElement("img");
+            image.src = item.imgSrc;
+            image.addEventListener("error", function () {
+              image.src = "images/placeholder.jpg";
+            });
+            image.addEventListener("click", function () {
+              showModal(item.imgSrc);
+            });
+            cards[i].prepend(image);
+            listItems[0].textContent = item.homeStatus ? `Home status: ${item.homeStatus}` : "";
+            listItems[1].textContent = item.city ? `City: ${item.city}` : "";
+            listItems[2].textContent = item.country ? `Country: ${item.country}` : "";
+
+            let sellingPrice = item.price ? `$${item.price.toLocaleString()}` : "";
+            listItems[3].textContent = `Selling Price: ${sellingPrice}`;
+
+            listItems[4].style.display = (item.lotAreaValue !== undefined && item.lotAreaUnit !== undefined) ? "list-item" : "none";
+            if (item.lotAreaValue !== undefined && item.lotAreaUnit !== undefined) {
+              let roundedLotArea = parseFloat(item.lotAreaValue.toFixed(2));
+              let lotAreaContent = Number.isNaN(roundedLotArea) ? "" : `${roundedLotArea} ${item.lotAreaUnit}`;
+              listItems[4].textContent = `Lot Area: ${lotAreaContent}`;
+            } else {
+              listItems[4].textContent = "";
+            }
+
+            seeMoreButtons[i].setAttribute("data-id", item.zpid);
+          }
+        }
+      })
+      .catch((error) => {
+        alert(`Error fetching data: ${error}`);
+      });
+  }
+
+  // Function to shuffle an array using Fisher-Yates algorithm
+  function shuffleArray(array) {
+    let currentIndex = array.length;
+    let temporaryValue, randomIndex;
+
+    while (currentIndex !== 0) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+  }
+
 
 
 
