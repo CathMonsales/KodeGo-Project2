@@ -319,9 +319,6 @@
             </ul>
         </div>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-        crossorigin="anonymous"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const cards = document.querySelectorAll(".card");
@@ -330,7 +327,7 @@
             const pageLinks = document.querySelectorAll(".page-link");
             const seeMoreButtons = document.querySelectorAll(".btn-success");
             let currentPage = 1;
-            let storedPage = localStorage.getItem("currentPage");
+            let storedPage = sessionStorage.getItem("currentPage");
             if (storedPage) {
                 currentPage = parseInt(storedPage);
             }
@@ -340,7 +337,7 @@
                     .then((response) => response.json())
                     .then((data) => {
                         console.log(data);
-                        let startIndex = (cuPrrrentPage - 1) * cards.length;
+                        let startIndex = (currentPage - 1) * cards.length;
                         let endIndex = Math.min(startIndex + cards.length, data.length);
 
                         for (let i = 0; i < cards.length; i++) {
@@ -394,12 +391,12 @@
                 if (currentPage === 1) {
                     pageItems[0].classList.add("disabled");
                 }
-                if (currentPage === 5) {
-                    pageItems[6].classList.add("disabled");
+                if (currentPage === 8) {
+                    pageItems[9].classList.add("disabled");
                 }
             }
 
-            function handleClick(event) {
+            function handleClick(event, resetPage = false) {
                 event.preventDefault();
                 let text = event.target.textContent;
                 if (text === "Previous") {
@@ -413,27 +410,23 @@
                 } else {
                     currentPage = parseInt(text);
                 }
-                localStorage.setItem("currentPage", currentPage.toString());
+                sessionStorage.setItem("currentPage", currentPage.toString());
                 fetchData();
                 updatePagination();
+                if (resetPage) {
+                    sessionStorage.removeItem("currentPage");
+                }
             }
 
             for (let i = 0; i < pageLinks.length; i++) {
-                pageLinks[i].addEventListener("click", handleClick);
+                pageLinks[i].addEventListener("click", function (event) {
+                    handleClick(event, true);
+                });
             }
 
             function redirectToPropertyPage(propertyId) {
-                localStorage.setItem("currentPage", currentPage.toString());
-                fetch("json/data.json")
-                    .then((response) => response.json())
-                    .then((data) => {
-                        let propertyData = data.find((item) => item.zpid == propertyId);
-                        let queryParams = `?zpid=${propertyId}&data=${JSON.stringify(propertyData)}`;
-                        window.location.href = `Singlepage.html${queryParams}`;
-                    })
-                    .catch((error) => {
-                        alert(`Error fetching data: ${error}`);
-                    });
+                sessionStorage.setItem("currentPage", currentPage.toString());
+                window.location.href = `Singlepage.html?zpid=${propertyId}`;
             }
 
             for (let i = 0; i < seeMoreButtons.length; i++) {
@@ -443,10 +436,24 @@
                 });
             }
 
+            // Check if the current page is set in the URL query parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const pageParam = urlParams.get("page");
+            if (pageParam) {
+                currentPage = parseInt(pageParam);
+                sessionStorage.setItem("currentPage", currentPage.toString());
+            } else {
+                sessionStorage.removeItem("currentPage");
+            }
+
             fetchData();
             updatePagination();
         });
+
     </script>
+
+
+
 
 
 </body>
