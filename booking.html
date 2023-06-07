@@ -15,17 +15,22 @@
     <link rel="icon" type="image/x-icon" href="/images/icon.png">
 
     <style>
+        html,
         body {
-            color: black;
-            background-image: linear-gradient(to bottom right, rgb(0, 255, 149), rgb(217, 217, 217))
+          height: 100%;
+          margin: 0;
+          padding: 0;
         }
-
-        main {
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-            flex-wrap: wrap;
-            background-color: white;
+    
+        .boxed {
+          min-height: 66.5%;
         }
-
+    
+        footer {
+          margin-top: auto;
+        }
+    
+    
         .nav-link {
             position: relative;
             color: #282828;
@@ -33,7 +38,7 @@
             margin: 3px;
             z-index: 1;
         }
-
+    
         .nav-link.active::after {
             content: "";
             position: absolute;
@@ -44,13 +49,13 @@
             background-color: #02F89C;
             z-index: -1;
         }
-
+    
         .brand_underline {
             position: relative;
             display: inline-block;
             z-index: 1;
         }
-
+    
         .brand_underline::after {
             content: "";
             position: absolute;
@@ -68,7 +73,7 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
+        <div class="container boxed">
             <img src="images/staybnb.png" width="150px" class="navbar-brand p-2" href="index.html">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -118,19 +123,19 @@
                     </form>
                 </div>
             </div>
-            <div class="col-sm-4 p-3 bg-dark text-white">
+            <div class="col-sm-4 p-3 bg-light">
                 <h1 class="mt-5">Info</h1>
                 <div class="icon-container m-3">
                     <i class="fas fa-envelope"></i>
-                    <span class="email"> staybnb@gmail.com</span>
+                    <span class="email">info@staybnb.com</span>
                 </div>
                 <div class="icon-container m-3">
                     <i class="fas fa-phone"></i>
-                    <span class="phone"> 555-555-555</span>
+                    <span class="phone">+1 123 456 7890</span>
                 </div>
                 <div class="icon-container m-3">
                     <i class="fas fa-city"></i>
-                    <span class="address"> 88 Melbourne St.</span>
+                    <span class="address"> 123 Main Street, City</span>
                 </div>
                 <div class="icon-container m-3">
                     <i class="fas fa-clock"></i>
