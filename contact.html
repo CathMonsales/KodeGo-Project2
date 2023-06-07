@@ -10,21 +10,27 @@
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="css/general.css">
     <script src="https://kit.fontawesome.com/572c759e4b.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image" href="images/icon.png">
     <title>Contact Us</title>
     <link rel="icon" type="image/x-icon" href="/images/icon.png">
 
     <style>
+        html,
         body {
-            color: black;
-            background-image: linear-gradient(to bottom right, rgb(0, 255, 149), rgb(217, 217, 217))
+          height: 100%;
+          margin: 0;
+          padding: 0;
         }
-
-        main {
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-            flex-wrap: wrap;
-            background-color: white;
+    
+        .boxed {
+          min-height: 66.5%;
         }
-
+    
+        footer {
+          margin-top: auto;
+        }
+    
+    
         .nav-link {
             position: relative;
             color: #282828;
@@ -32,7 +38,7 @@
             margin: 3px;
             z-index: 1;
         }
-
+    
         .nav-link.active::after {
             content: "";
             position: absolute;
@@ -43,13 +49,13 @@
             background-color: #02F89C;
             z-index: -1;
         }
-
+    
         .brand_underline {
             position: relative;
             display: inline-block;
             z-index: 1;
         }
-
+    
         .brand_underline::after {
             content: "";
             position: absolute;
@@ -62,6 +68,7 @@
             z-index: -1;
         }
     </style>
+    
 
 </head>
 
@@ -94,59 +101,37 @@
             </div>
         </div>
     </nav>
-    
-    <main class="container">
+
+    <main class="container boxed">
         <div class="row" style="margin-top: 50px;">
             <div class="col-sm-8 p-5">
                 <h1><span class="brand_underline">Contact</span> Us</h1>
-                <small>Feel free to contact us any time. We will get <br>back to you as soon as we can!</small>
+                <small>Feel free to contact us any time. We will get back to you as soon as we can!</small>
                 <div class="container mt-2">
-                    <form>
+                    <form id="contact-form">
                         <div class="mb-3">
                             <label for="name">Name</label>
-                            <input type="name" class="form-control" id="name" placeholder="Enter name" name="name">
+                            <input type="text" class="form-control" id="name" placeholder="Enter name" required>
                         </div>
                         <div class="mb-3">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+                            <input type="email" class="form-control" id="email" placeholder="Enter email" required>
                         </div>
                         <div class="mb-3">
                             <label for="message">Message</label>
-                            <input type="message" class="form-control" id="message" placeholder="Enter message"
-                                name="message">
+                            <textarea class="form-control" id="message" placeholder="Enter message" rows="5"
+                                required></textarea>
                         </div>
-                    </form action="#">
-                    <div class="d-grid gap-2 col-6 mx-auto">
-                        <button type="submit" class="btn btn-dark btn-block">Send</button>
-                    </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
                 </div>
             </div>
-            <div class="col-sm-4 p-3 bg-dark text-white">
-                <h1>Info</h1>
-                <div class="icon-container m-3">
-                    <i class="fas fa-envelope"></i>
-                    <span class="email"> staybnb@gmail.com</span>
-                </div>
-                <div class="icon-container m-3">
-                    <i class="fas fa-phone"></i>
-                    <span class="phone"> 555-555-555</span>
-                </div>
-                <div class="icon-container m-3">
-                    <i class="fas fa-city"></i>
-                    <span class="address"> 88 Melbourne St.</span>
-                </div>
-                <div class="icon-container m-3">
-                    <i class="fas fa-clock"></i>
-                    <span class="time"> 09:00 - 18:00</span>
-                </div>
-                <div class="icon-container m-3">
-                    <i class="fa-brands fa-facebook"></i>
-                    <span>facebook.com/staybnb</span>
-                </div>
-                <div class="icon-container m-3">
-                    <i class="fa-brands fa-twitter"></i>
-                    <span>twitter.com/staybnb</span>
-                </div>
+            <div class="col-sm-4 p-5">
+                <h1>StayBnB Office</h1>
+                <p>123 Main Street, City</p>
+                <p>State, Country</p>
+                <p>Email: info@staybnb.com</p>
+                <p>Phone: +1 123 456 7890</p>
             </div>
         </div>
     </main>
@@ -155,37 +140,94 @@
             <div class="col-md-5">
                 <img src="images/staybnb.png" width="200" class="ml-5">
             </div>
-    
+
             <div class="col-md-2">
                 <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="index.html" class="nav-link p-0 text-body-secondary"><h5>Home</h5></a></li>
-                <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="pagination.html" class="nav-link p-0 text-body-secondary">Properties</a></li>
-                    
-                </ul>
+                    <li class="nav-item mb-2"><a href="index.html" class="nav-link p-0 text-body-secondary">
+                            <h5>Home</h5>
+                        </a></li>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="pagination.html"
+                                class="nav-link p-0 text-body-secondary">Properties</a></li>
+
+                    </ul>
             </div>
-    
+
             <div class="col-md-2">
                 <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="agents.html" class="nav-link p-0 text-body-secondary"><h5>Agents</h5></a></li>
-                <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="privacy.html" class="nav-link p-0 text-body-secondary">Privacy Policy</a></li>
-                    <li class="nav-item mb-2"><a href="termsofuse.html" class="nav-link p-0 text-body-secondary">Terms of Use</a></li>
-                </ul>
+                    <li class="nav-item mb-2"><a href="agents.html" class="nav-link p-0 text-body-secondary">
+                            <h5>Agents</h5>
+                        </a></li>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="privacy.html"
+                                class="nav-link p-0 text-body-secondary">Privacy Policy</a></li>
+                        <li class="nav-item mb-2"><a href="termsofuse.html"
+                                class="nav-link p-0 text-body-secondary">Terms of Use</a></li>
+                    </ul>
             </div>
-    
+
             <div class="col-md-2">
                 <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="contact.html" class="nav-link p-0 text-body-secondary"><h5>Contact Us</h5></a></li>
-                <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><p-0 text-body-secondary>(021) 123-456</a></li>
-                    <li class="nav-item mb-2"><p-0 text-body-secondary>hello@staybnb.com</a></li>
-                    <li class="nav-item mb-2"><a href="booking.html" class="nav-link p-0 text-body-secondary">Book a Viewing Now!</a></li>
-                    
-                </ul>
+                    <li class="nav-item mb-2"><a href="contact.html" class="nav-link p-0 text-body-secondary">
+                            <h5>Contact Us</h5>
+                        </a></li>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><p-0 text-body-secondary>(021) 123-456</a></li>
+                        <li class="nav-item mb-2"><p-0 text-body-secondary>hello@staybnb.com</a></li>
+                        <li class="nav-item mb-2"><a href="booking.html" class="nav-link p-0 text-body-secondary">Book a
+                                Viewing Now!</a></li>
+
+                    </ul>
             </div>
         </div>
     </footer>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
+        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js";
+
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAZfYDfwza5IF-3WXAsrz0bL0s6-HeO8PU",
+            authDomain: "kodego-staybnb.firebaseapp.com",
+            projectId: "kodego-staybnb",
+            storageBucket: "kodego-staybnb.appspot.com",
+            messagingSenderId: "474414165470",
+            appId: "1:474414165470:web:397c698ac971b8d09c814f"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        var bookingForm = document.getElementById("contact-form");
+        bookingForm.addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            // Get form values
+            var name = bookingForm.elements["name"].value;
+            var email = bookingForm.elements["email"].value;
+            var message = bookingForm.elements["message"].value;
+
+            try {
+                // Save form data to Firestore
+                const docRef = await addDoc(collection(db, "contacts"), {
+                    name: name,
+                    email: email,
+                    message: message,
+                    contacted: false
+                });
+
+                // Reset form after successful submission
+                bookingForm.reset();
+                alert("Your booking has been submitted successfully!");
+            } catch (error) {
+                console.error("Error adding document: ", error);
+                alert("An error occurred. Please try again later.");
+            }
+        });
+    </script>
 </body>
 
 </html>
