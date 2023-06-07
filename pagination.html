@@ -10,33 +10,32 @@
     <link rel="stylesheet" href="css/general.css">
     <title>Property Listings</title>
     <style>
-        
         .nav-link {
             position: relative;
             color: #282828;
             text-decoration: none;
             margin: 15px;
-            z-index: 1; 
+            z-index: 1;
         }
 
         .centered-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
         .nav-link.active::after {
-  content: "";
-  position: absolute;
-  bottom: 10px;
-  left: 10%;
-  width: 80%;
-  height: 5px;
-  background-color: #02F89C;
-  z-index: -1;
-}
+            content: "";
+            position: absolute;
+            bottom: 10px;
+            left: 10%;
+            width: 80%;
+            height: 5px;
+            background-color: #02F89C;
+            z-index: -1;
+        }
 
-.brand_underline {
+        .brand_underline {
             position: relative;
             display: inline-block;
             z-index: 1;
@@ -122,23 +121,23 @@
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
-                  <li class="nav-item">
-                    <a class="nav-link" href="index.html">Home</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link active" href="#">Properties</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="agents.html">Agents</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contact Us</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="booking.html">Book a view</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="pagination.html?page=1">Properties</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="agents.html">Agents</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mr-3" href="booking.html">Book a Viewing</a>
+                    </li>
                 </ul>
-              </div>
+            </div>
         </div>
     </nav>
 
@@ -260,21 +259,21 @@
 
         <div class="centered-container">
             <div class="pagination-container">
-              <ul class="pagination pb-4 pt-5">
-                <li class="page-item disabled"><span class="page-link">Previous</span></li>
-                <li class="page-item active"><span class="page-link">1</span></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                <li class="page-item"><a class="page-link" href="#">5</a></li>
-                <li class="page-item"><a class="page-link" href="#">6</a></li>
-                <li class="page-item"><a class="page-link" href="#">7</a></li>
-                <li class="page-item"><a class="page-link" href="#">8</a></li>
-                <li class="page-item"><a class="page-link" href="#">Next</a></li>
-              </ul>
+                <ul class="pagination pb-4 pt-5">
+                    <li class="page-item disabled"><span class="page-link">Previous</span></li>
+                    <li class="page-item active"><span class="page-link">1</span></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">4</a></li>
+                    <li class="page-item"><a class="page-link" href="#">5</a></li>
+                    <li class="page-item"><a class="page-link" href="#">6</a></li>
+                    <li class="page-item"><a class="page-link" href="#">7</a></li>
+                    <li class="page-item"><a class="page-link" href="#">8</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                </ul>
             </div>
-          </div>
-          
+        </div>
+
 
     </div>
 
@@ -324,70 +323,69 @@
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
         crossorigin="anonymous"></script>
     <script>
-document.addEventListener("DOMContentLoaded", function () {
-    const cards = document.querySelectorAll(".card");
-    const pagination = document.querySelector(".pagination");
-    const pageItems = document.querySelectorAll(".page-item");
-    const pageLinks = document.querySelectorAll(".page-link");
-    const seeMoreButtons = document.querySelectorAll(".btn-success");
-    let currentPage = 1;
+        document.addEventListener("DOMContentLoaded", function () {
+            const cards = document.querySelectorAll(".card");
+            const pagination = document.querySelector(".pagination");
+            const pageItems = document.querySelectorAll(".page-item");
+            const pageLinks = document.querySelectorAll(".page-link");
+            const seeMoreButtons = document.querySelectorAll(".btn-success");
+            let currentPage = 1;
+            let storedPage = localStorage.getItem("currentPage");
+            if (storedPage) {
+                currentPage = parseInt(storedPage);
+            }
 
-    function fetchData() {
-        fetch("json/data.json")
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(data);
-                let startIndex = (currentPage - 1) * cards.length;
-            let endIndex = Math.min(startIndex + cards.length, data.length);
+            function fetchData() {
+                fetch("json/data.json")
+                    .then((response) => response.json())
+                    .then((data) => {
+                        console.log(data);
+                        let startIndex = (cuPrrrentPage - 1) * cards.length;
+                        let endIndex = Math.min(startIndex + cards.length, data.length);
 
-                for (let i = 0; i < cards.length; i++) {
-                    let index = (currentPage - 1) * cards.length + i; // adjust for current page
-                    if (index < data.length) {
-                        let item = data[index];
-                        let listItems = cards[i].querySelectorAll("li");
-                        let existingImage = cards[i].querySelector("img");
-                        if (existingImage) {
-                            cards[i].removeChild(existingImage);
+                        for (let i = 0; i < cards.length; i++) {
+                            let index = (currentPage - 1) * cards.length + i; // adjust for current page
+                            if (index < data.length) {
+                                let item = data[index];
+                                let listItems = cards[i].querySelectorAll("li");
+                                let existingImage = cards[i].querySelector("img");
+                                if (existingImage) {
+                                    cards[i].removeChild(existingImage);
+                                }
+                                let image = document.createElement("img");
+                                image.src = item.imgSrc;
+                                image.addEventListener("error", function () {
+                                    image.src = "images/placeholder.jpg";
+                                });
+                                image.addEventListener("click", function () {
+                                    showModal(item.imgSrc);
+                                });
+                                cards[i].prepend(image);
+                                listItems[0].textContent = item.homeStatus ? `Home status: ${item.homeStatus}` : "";
+                                listItems[1].textContent = item.city ? `City: ${item.city}` : "";
+                                listItems[2].textContent = item.country ? `Country: ${item.country}` : "";
+
+                                let sellingPrice = item.price ? `$${item.price.toLocaleString()}` : "";
+                                listItems[3].textContent = `Selling Price: ${sellingPrice}`;
+
+                                listItems[4].style.display = (item.lotAreaValue !== undefined && item.lotAreaUnit !== undefined) ? "list-item" : "none";
+                                if (item.lotAreaValue !== undefined && item.lotAreaUnit !== undefined) {
+                                    let roundedLotArea = parseFloat(item.lotAreaValue.toFixed(2));
+                                    let lotAreaContent = Number.isNaN(roundedLotArea) ? "" : `${roundedLotArea} ${item.lotAreaUnit}`;
+                                    listItems[4].textContent = `Lot Area: ${lotAreaContent}`;
+                                } else {
+                                    listItems[4].textContent = "";
+                                }
+                                seeMoreButtons[i].setAttribute("data-id", item.zpid);
+                            }
                         }
-                        let image = document.createElement("img");
-                        image.src = item.imgSrc;
-                        image.addEventListener("error", function () {
-                            image.src = "images/placeholder.jpg";
-                        });
-                        image.addEventListener("click", function () {
-                            showModal(item.imgSrc);
-                        });
-                        cards[i].prepend(image);
-                        listItems[0].textContent = item.homeStatus ? `Home status: ${item.homeStatus}` : "";
-                        listItems[1].textContent = item.city ? `City: ${item.city}` : "";
-                        listItems[2].textContent = item.country ? `Country: ${item.country}` : "";
+                    })
+                    .catch((error) => {
+                        alert(`Error fetching data: ${error}`);
+                    });
+            }
 
-                        let sellingPrice = item.price ? `$${item.price.toLocaleString()}` : "";
-                        listItems[3].textContent = `Selling Price: ${sellingPrice}`;
-
-                        listItems[4].style.display = (item.lotAreaValue !== undefined && item.lotAreaUnit !== undefined) ? "list-item" : "none";
-                        if (item.lotAreaValue !== undefined && item.lotAreaUnit !== undefined) {
-                            let roundedLotArea = parseFloat(item.lotAreaValue.toFixed(2));
-                            let lotAreaContent = Number.isNaN(roundedLotArea) ? "" : `${roundedLotArea} ${item.lotAreaUnit}`;
-                            listItems[4].textContent = `Lot Area: ${lotAreaContent}`;
-                        } else {
-                            listItems[4].textContent = "";
-                        }
-                        
-                        
-                        seeMoreButtons[i].setAttribute("data-id", item.zpid);
-                    }
-                }
-            
-            })
-            .catch((error) => {
-                alert(`Error fetching data: ${error}`);
-            });
-    }
-    
-
-
-    function updatePagination() {
+            function updatePagination() {
                 for (let i = 0; i < pageItems.length; i++) {
                     pageItems[i].classList.remove("active");
                     pageItems[i].classList.remove("disabled");
@@ -415,6 +413,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 } else {
                     currentPage = parseInt(text);
                 }
+                localStorage.setItem("currentPage", currentPage.toString());
                 fetchData();
                 updatePagination();
             }
@@ -423,33 +422,32 @@ document.addEventListener("DOMContentLoaded", function () {
                 pageLinks[i].addEventListener("click", handleClick);
             }
 
+            function redirectToPropertyPage(propertyId) {
+                localStorage.setItem("currentPage", currentPage.toString());
+                fetch("json/data.json")
+                    .then((response) => response.json())
+                    .then((data) => {
+                        let propertyData = data.find((item) => item.zpid == propertyId);
+                        let queryParams = `?zpid=${propertyId}&data=${JSON.stringify(propertyData)}`;
+                        window.location.href = `Singlepage.html${queryParams}`;
+                    })
+                    .catch((error) => {
+                        alert(`Error fetching data: ${error}`);
+                    });
+            }
+
+            for (let i = 0; i < seeMoreButtons.length; i++) {
+                seeMoreButtons[i].addEventListener("click", function () {
+                    let propertyId = seeMoreButtons[i].getAttribute("data-id");
+                    redirectToPropertyPage(propertyId);
+                });
+            }
+
             fetchData();
             updatePagination();
-
-function redirectToPropertyPage(propertyId) {
-    fetch("json/data.json")
-    .then((response) => response.json())
-    .then((data) => {
-      let propertyData = data.find((item) => item.zpid == propertyId);
-      window.location.href = `Singlepage.html?zpid=${propertyId}&data=${JSON.stringify(propertyData)}`;
-    })
-    .catch((error) => {
-      alert(`Error fetching data: ${error}`);
-    });
-}
-    
-    for (let i = 0; i < seeMoreButtons.length; i++) {
-        seeMoreButtons[i].addEventListener("click", function () {
-            let propertyId = seeMoreButtons[i].getAttribute("data-id");
-            redirectToPropertyPage(propertyId);
         });
-    }
-    fetchData();
-
-});
-
-      
     </script>
+
 
 </body>
 
