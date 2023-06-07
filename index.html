@@ -152,7 +152,7 @@
         }
 
         .hero_right {
-            width: 210px;
+            width: 207px;
             height: 234px;
             background-repeat: no-repeat;
             background-position: center;
@@ -180,6 +180,20 @@
             border-bottom-right-radius: 20px;
             overflow: hidden;
             z-index: 2;
+        }
+
+        .carousel-inner .carousel-item img {
+            width: 207px;
+        }
+
+        .carousel-inner .carousel-item img.img-fluid {
+            width: 100%;
+            height: auto;
+        }
+
+        .smaller-image {
+            max-width: 30%;
+            height: auto;
         }
     </style>
 </head>
@@ -239,13 +253,15 @@
     </div>
 
 
-    <div class="container-fluid mt-5">
+    <div class="container mt-5">
         <div class="row align-items-center"> <!-- Add the "align-items-center" class to the row -->
-            <div class="col-md-6 mt-5 text-center">
+            <div class="col-md-6">
                 <div class="row">
                     <div class="col-md-12">
-                        <h2>Obtain luxury properties at the market's <span class="brand_underline">best price</span>
-                        </h2>
+                        <img src="images/agents.png" class="float-left mb-3 smaller-image" alt="agents">
+                        <h1>Obtain luxury<br>properties at the<br>market's <span class="brand_underline">best
+                                price</span>
+                        </h1>
                     </div>
                 </div>
             </div>
@@ -348,59 +364,76 @@
         }
 
         function initializeCarousel() {
-            const carouselInner = document.querySelector(".carousel-inner");
+    const carouselInner = document.querySelector(".carousel-inner");
 
-            // Clear existing carousel items
-            carouselInner.innerHTML = "";
+    // Clear existing carousel items
+    carouselInner.innerHTML = "";
 
-            fetch("json/data.json")
-                .then((response) => response.json())
-                .then((data) => {
-                    // Generate random indices for carousel items
-                    const randomIndices = generateRandomIndices(data.length);
+    fetch("json/data.json")
+        .then((response) => response.json())
+        .then((data) => {
+            // Get the specific range of indices for carousel items
+            const indices = generateSpecificIndices(data.length, 36, 40);
 
-                    // Loop through random indices and create carousel items
-                    randomIndices.forEach((index) => {
-                        const item = document.createElement("div");
-                        item.classList.add("carousel-item");
+            // Loop through the indices and create carousel items
+            indices.forEach((index) => {
+                const item = document.createElement("div");
+                item.classList.add("carousel-item");
 
-                        const image = document.createElement("img");
-                        image.src = data[index].imgSrc; // Use the imgSrc property from the data
-                        image.classList.add("d-block", "w-100");
+                const image = document.createElement("img");
+                image.classList.add("d-block", "w-100");
+                image.onerror = handleImageError; // Add error handler
+                image.src = data[index].imgSrc; // Use the imgSrc property from the data
 
-                        item.appendChild(image);
-                        carouselInner.appendChild(item);
-                    });
+                item.appendChild(image);
+                carouselInner.appendChild(item);
+            });
 
-                    // Set the first item as active
-                    carouselInner.firstChild.classList.add("active");
-                })
-                .catch((error) => {
-                    console.log("Error fetching data:", error);
-                });
-        }
-
-        function generateRandomIndices(maxLength) {
-            const indices = [];
-            const numItems = Math.min(5, maxLength);
-
-            while (indices.length < numItems) {
-                const randomIndex = Math.floor(Math.random() * maxLength);
-
-                // Ensure the index is not already in the array
-                if (!indices.includes(randomIndex)) {
-                    indices.push(randomIndex);
-                }
-            }
-
-            return indices;
-        }
-
-        // Fetch data and update hero images on page load
-        document.addEventListener("DOMContentLoaded", () => {
-            fetchData();
-            initializeCarousel();
+            // Set the first item as active
+            carouselInner.firstChild.classList.add("active");
+        })
+        .catch((error) => {
+            console.log("Error fetching data:", error);
         });
+}
+
+function handleImageError(event) {
+    const errorImage = event.target;
+
+    fetch("api/alt-images")
+        .then((response) => response.json())
+        .then((data) => {
+            const altImages = data.images; // Assumes the API response contains an 'images' array
+
+            // Get a random alternative image URL
+            const randomIndex = Math.floor(Math.random() * altImages.length);
+            const altImageSrc = altImages[randomIndex];
+
+            // Set the alternative image URL
+            errorImage.src = altImageSrc;
+        })
+        .catch((error) => {
+            console.log("Error fetching alternative images:", error);
+        });
+}
+
+function generateSpecificIndices(maxLength, start, end) {
+    const indices = [];
+
+    for (let i = start; i <= end; i++) {
+        if (i >= 0 && i < maxLength) {
+            indices.push(i);
+        }
+    }
+
+    return indices;
+}
+
+// Fetch data and update hero images on page load
+document.addEventListener("DOMContentLoaded", () => {
+    fetchData();
+    initializeCarousel();
+});
     </script>
 </body>
 
