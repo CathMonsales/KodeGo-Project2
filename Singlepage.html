@@ -7,19 +7,23 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Property Listings</title>
   <link rel="icon" type="image/x-icon" href="/images/icon.png">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
   <style>
     body {
       color: black;
       background-color: rgb(245, 245, 245);
     }
+
     .nav-link {
       position: relative;
       color: #282828;
       text-decoration: none;
       margin: 15px;
-      z-index: 1; 
+      z-index: 1;
     }
+
     .nav-link.active::after {
       content: "";
       position: absolute;
@@ -29,28 +33,14 @@
       height: 5px;
       background-color: #02F89C;
       z-index: -1;
-    }       
-    .container {
-      margin: 20px auto;
-      padding: 20px;
-      max-width: 800px;
     }
+
 
     /* Center the title and make it bigger and bolder */
     #property-title {
       text-align: center;
       font-size: 36px;
       font-weight: bold;
-    }
-
-    /* Make the image responsive and add a border and a shadow */
-    #property-image {
-      width: 100%;
-      height: auto;
-      padding: 10px;
-      box-shadow: 0 0 30px rgba(0,0,0,0.1);
-      border-radius: 15px;
-      box-shadow: 10px 10px 5px rgb(104, 132, 141);
     }
 
     /* Center the div and make it a flex container */
@@ -70,7 +60,7 @@
       margin: 10px;
       border: 1px solid #eee;
     }
-    
+
     #back-button {
       display: flex;
       justify-content: center;
@@ -79,7 +69,10 @@
       font-size: 10px;
       padding: 5px 28px;
     }
-    #more {display: none;}
+
+    #more {
+      display: none;
+    }
 
     .button {
       display: inline-block;
@@ -95,16 +88,14 @@
       box-shadow: 0 5px #999;
     }
 
-    .button:hover {background-color: #5cffce}
+    .button:hover {
+      background-color: #5cffce
+    }
 
     .button:active {
       background-color: #5cffce;
       box-shadow: 0 5px #666;
       transform: translateY(4px);
-    }
-    #contactAgent {
-      border-radius: 5px;
-      box-shadow: 5px 5px 5px rgb(104, 132, 141);
     }
   </style>
 </head>
@@ -112,41 +103,43 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-        <img src="images/staybnb.png" width="150px" class="navbar-brand p-2" href="index.html">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="pagination.html?page=1">Properties</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="agents.html">Agents</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contact Us</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link mr-3" href="booking.html">Book a Viewing</a>
-                </li>
-            </ul>
-        </div>
+      <img src="images/staybnb.png" width="150px" class="navbar-brand p-2" href="index.html">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="pagination.html?page=1">Properties</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="agents.html">Agents</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mr-3" href="booking.html">Book a Viewing</a>
+          </li>
+        </ul>
+      </div>
     </div>
-</nav>
+  </nav>
   <!-- Add a button element with an onclick attribute -->
   <div class="container-fluid">
     <div class="row">
       <div class="col-2">
         <button id="back-button" class="btn btn btn-outline-success m-2 text-center" onclick="goBack()">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left"
+            viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+              d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
           </svg>
-          Back 
+          Back
         </button>
       </div>
     </div>
@@ -154,100 +147,87 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-12">
+      <div class="col-md-12 mt-5 text-center">
         <img id="property-image" src="" alt="Card image">
       </div>
     </div>
   </div>
 
+
   <div class="container">
-    <div class="col-12">
+    <div class="col-md-12 mt-3">
       <h1 id="property-title"></h1>
     </div>
   </div>
-  <!-- Description -->
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-4 border border-3" id="contactAgent">
-        <div class="col-md-2">
-          <img src="images/staybnb.png" width="70" class="ml-5">
-        </div>
-        <h3 class="text-center">Contact Agent</h3>
-        <form action="/action_page.php">
-          <div class="form-floating mb-3 mt-3">
-            <input type="text" class="form-control" id="firstName" placeholder="First Name" name="firstName">
-            <label for="firstName">First Name</label>
-          </div>
-          <div class="form-floating mt-3 mb-3">
-            <input type="text" class="form-control" id="lastname" placeholder="Last Name" name="lastname">
-            <label for="lastname">Last Name</label>
-          </div>
-          <div class="form-floating mt-3 mb-3">
-            <input type="tel" class="form-control" id="phonenumber" placeholder="Phone Number" name="phone">
-            <label for="phone">Phone Number</label>
-          </div>
-          <div class="form-floating mt-3 mb-3">
-            <input type="text" class="form-control" id="email" placeholder="Last Name" name="email">
-            <label for="email">Last Name</label>
-          </div>
-          <div class="d-grid gap-2 col-6 mx-auto m-2">
-            <button type="submit" class="btn btn-dark btn-block">Contact Agent</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
   <!-- Property Details -->
-  <div class="container-fluid">
+  <div class="container">
     <div class="row">
-      <div class="col-12">
-        <!-- Use a div instead of a ul -->  
-        <div class="row" id="property-details">
-          <p>Home status: <span id="home-status"></span></p>
-          <p>City: <span class="icon-pin ::before" id="city"></span></p>
-          <p>Country: <span id="country"></span></p>
-          <p>Price: <span id="price"></span></p>
-          <p>Lot area: <span id="lot-area"></span></p>
-        </div>
+      <div class="col-md-8 mt-5 text-center" id="property-details">
+        <p class="d-flex justify-content-center align-items-center">
+          <span>Home status: </span>
+          <span id="home-status"></span>
+        </p>
+        <p class="d-flex justify-content-center align-items-center">
+          <span>City: </span>
+          <span class="icon-pin ::before" id="city"><i class="bi bi-geo-alt-fill"></i></span>
+        </p>
+        <p class="d-flex justify-content-center align-items-center">
+          <span>Country: </span>
+          <span id="country"><i class="bi bi-flag-fill"></i></span>
+        </p>
+        <p class="d-flex justify-content-center align-items-center">
+          <span>Price: </span>
+          <span id="price"><i class="bi bi-currency-dollar"></i></span>
+        </p>
+        <p class="d-flex justify-content-center align-items-center">
+          <span>Lot area: </span>
+          <span id="lot-area"><i class="bi bi-rulers"></i></span>
+        </p>
       </div>
+      <div class="col-md-1"></div>
+      <div class="col-md-3 mt-5 border text-center"><h3>Book a viewing now!</h3></div>
     </div>
   </div>
+  
+
 
   <footer class="p-3 mt-5 border-top bg-light">
     <div class="row">
-        <div class="col-md-5">
-            <img src="images/staybnb.png" width="200" class="ml-5">
-        </div>
+      <div class="col-md-5">
+        <img src="images/staybnb.png" width="200" class="ml-5">
+      </div>
 
-        <div class="col-md-2">
-            <h5>Home</h5>
-            <ul class="nav flex-column">
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Properties</a></li>
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Agents</a></li>
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Contact Us</a></li>
-            </ul>
-        </div>
+      <div class="col-md-2">
+        <h5>Home</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Properties</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Agents</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Contact Us</a></li>
+        </ul>
+      </div>
 
-        <div class="col-md-2">
-            <h5>Account</h5>
-            <ul class="nav flex-column">
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Register</a></li>
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Login</a></li>
-            </ul>
-        </div>
+      <div class="col-md-2">
+        <h5>Account</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Register</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Login</a></li>
+        </ul>
+      </div>
 
-        <div class="col-md-2">
-            <h5>Company</h5>
-            <ul class="nav flex-column">
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About Us</a></li>
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Property</a></li>
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Privacy Police</a></li>
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Term of Policy</a></li>
-            </ul>
-        </div>
+      <div class="col-md-2">
+        <h5>Company</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About Us</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Property</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Privacy Police</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Term of Policy</a></li>
+        </ul>
+      </div>
     </div>
-  </footer> 
-  
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+    crossorigin="anonymous"></script>
   <script>
     const jsonUrl = "json/data.json";
     const zpid = new URLSearchParams(window.location.search).get("zpid");
@@ -267,25 +247,12 @@
               : `${item.city}, ${item.country}`;
             propertyImage.src = item.imgSrc;
             propertyDetails.innerHTML = `
-              <li>${
-                item.homeStatus ? `Home Status: ${item.homeStatus}` : ""
-              }</li>
-              <li>Bedrooms: ${item.bedrooms}</li>
-              <li>Bathrooms: ${item.bathrooms}</li>
-              <li>City: ${item.city}</li>
-              <li>State: ${item.state}</li>
-              <li>Country: ${item.country}</li>
-              <li>${
-                item.price
-                  ? `Selling Price: $${item.price.toLocaleString()}`
-                  : "Selling Price: N/A"
-              }</li>
-              <li>${
-                item.lotAreaValue !== undefined && item.lotAreaUnit !== undefined
-                  ? `Lot Area: ${item.lotAreaValue} ${item.lotAreaUnit}`
-                  : "Lot Area: N/A"
-              }</li>
-            `;
+          <h1 class="fs-5">Home status: <span id="home-status">${item.homeStatus}</span></h1>
+          <h1 class="fs-5">City: <span id="city"><i class="bi bi-geo-alt-fill"></i> ${item.city}</span></h1>
+          <h1 class="fs-5">Country: <span id="country"><i class="bi bi-flag-fill"></i> ${item.country}</span></h1>
+          <h1 class="fs-5">Price: <span id="price"> ${item.price ? `$${item.price.toLocaleString()}` : 'N/A'}</span></h1>
+          <h1 class="fs-5">Lot area: <span id="lot-area"><i class="bi bi-arrows-expand"></i> ${item.lotAreaValue !== undefined && item.lotAreaUnit !== undefined ? `${item.lotAreaValue} ${item.lotAreaUnit}` : 'N/A'}</span></h1>
+        `;
           } else {
             alert("No property found with that zpid.");
           }
@@ -308,14 +275,15 @@
 
       if (dots.style.display === "none") {
         dots.style.display = "inline";
-        btnText.innerHTML = "Read More..."; 
+        btnText.innerHTML = "Read More...";
         moreText.style.display = "none";
       } else {
         dots.style.display = "none";
-        btnText.innerHTML = "Read Less..."; 
+        btnText.innerHTML = "Read Less...";
         moreText.style.display = "inline";
       }
     }
   </script>
 </body>
+
 </html>
