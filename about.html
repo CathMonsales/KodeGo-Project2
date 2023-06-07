@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/general.css">
+    <link rel="icon" type="image/x-icon" href="/images/icon.png">
+    <title>About Us</title>
+
+    <style>
+        body {
+            color: black;
+            background-color: rgb(223, 223, 223);
+        }
+        .brand_underline {
+            position: relative;
+            display: inline-block;
+            z-index: 1;
+        }
+
+        .brand_underline::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 7px;
+            margin-bottom: 8px;
+            background-color: #02F89C;
+            z-index: -1;
+        }
+        main {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            flex-wrap: wrap;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <img src="images/staybnb.png" width="150px" class="navbar-brand p-2" href="index.html">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pagination.html?page=1">Properties</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="agents.html">Agents</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mr-3" href="booking.html">Book a Viewing</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="row" style="margin-top: 50px;">
+            <div class="col-md-7 bg-white">
+                <div class="about text-center">
+                    <h3 class="display-5 fw-bold text-body-emphasis">About <span class="brand_underline">Us</span></h3>
+                    <p class="lead mb-4">
+                        StayBnB Real Estate is a premier real estate service that specializes in offering exceptional 
+                        properties for short-term and long-term stays. We understand that finding the perfect home or 
+                        investment property is a significant decision, and we strive to provide a seamless and rewarding 
+                        experience for buyers, sellers, and renters alike.
+                    </p>
+                </div>
+                <div>
+                    <h5 class="text-center">What Sets Us Apart</h5>
+                    <ul>
+                        <li>Extensive Propety Portfolio</li>
+                        <li>Market Expertise</li>
+                        <li>Personalized Approach</li>
+                        <li>Professional Guidance</li>
+                        <li>Trust and Integrity</li>
+                        <li>Exceptional Customer Service</li>
+                    </ul>
+                    <p class="text-center">
+                        Whether you're searching for your dream home, selling a property, or seeking a reliable real estate 
+                        partner, StayBnB Real Estate is here to assist you. We are passionate about real estate and dedicated 
+                        to helping our clients achieve their goals. Contact us today and let us guide you through the exciting 
+                        world of real estate.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-5 p-3 bg-dark text-white">
+                <h1 class="fw-medium text-center">Vission</h1>
+                <p>
+                    Our vision is to be the trusted real estate partner that helps individuals and families find 
+                    their dream homes or lucrative investment properties. We aim to simplify the real estate process,
+                     provide transparent and reliable information, and deliver exceptional customer service to our clients.
+                </p>
+                <hr>
+                <h1 class="fw-medium text-center">Mission</h1>
+                <p>
+                    Our mission is to connect buyers, sellers, and renters with high-quality properties that meet their 
+                    unique needs and preferences. We are dedicated to providing comprehensive real estate services, including 
+                    property marketing, property management, and personalized assistance throughout the entire real estate journey.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="p-3 mt-5 border-top bg-light">
+        <div class="row">
+            <div class="col-md-5">
+                <img src="images/staybnb.png" width="200" class="ml-5">
+            </div>
+    
+            <div class="col-md-2">
+                <h5>Home</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="pagination.html" class="nav-link p-0 text-body-secondary">Properties</a></li>
+                    
+                </ul>
+            </div>
+    
+            <div class="col-md-2">
+                <h5>Agents</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="aboutus.html" class="nav-link p-0 text-body-secondary">About Us</a></li>
+                    <li class="nav-item mb-2"><a href="privacy.html" class="nav-link p-0 text-body-secondary">Privacy Policy</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Terms of Use</a></li>
+                </ul>
+            </div>
+    
+            <div class="col-md-2">
+                <h5>Contact Us</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><p-0 text-body-secondary>(021) 123-456</a></li>
+                    <li class="nav-item mb-2"><p-0 text-body-secondary>hello@staybnb.com</a></li>
+                    <li class="nav-item mb-2"><a href="booking.html" class="nav-link p-0 text-body-secondary">Book a Viewing Now!</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
