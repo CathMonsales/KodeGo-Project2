@@ -285,8 +285,78 @@
         </div>
     </div>
 
+<div class="container mt-5">
+    
+    <div class="row">
+        <div class="col-md-12"><h1 class="mt-5 mb-5 text-center">Featured <span class="brand_underline">Properties</span></h1></div>
+    <div class="card col-md-4">
+        <ul class="p-4 list-unstyled">
+            <li>Home status:</li>
+            <li>City:</li>
+            <li>Country:</li>
+            <li>Currency:</li>
+            <li>Date price changed: </li>
+        </ul>
+        <a href="#" class="btn btn-success btn-sm m-1">See more</a>
+    </div>
 
+    <div class="card col-md-4">
+        <ul class="p-4 list-unstyled">
+            <li>Home status:</li>
+            <li>City:</li>
+            <li>Country:</li>
+            <li>Currency:</li>
+            <li>Date price changed: </li>
+        </ul>
+        <a href="#" class="btn btn-success btn-sm m-1">See more</a>
+    </div>
 
+    <div class="card col-md-4">
+        <ul class="p-4 list-unstyled">
+            <li>Home status: </li>
+            <li>City: </li>
+            <li>Country: </li>
+            <li>Currency: </li>
+            <li>Date price changed:</li>
+        </ul>
+        <a href="#" class="btn btn-success btn-sm m-1">See more</a>
+    </div>
+</div>
+</div>
+<footer class="p-3 mt-5 border-top bg-light">
+    <div class="row">
+        <div class="col-md-5">
+            <img src="images/staybnb.png" width="200" class="ml-5">
+        </div>
+
+        <div class="col-md-2">
+            <h5>Home</h5>
+            <ul class="nav flex-column">
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Properties</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Agents</a></li>
+                <li class="nav-item mb-2"><a href="" class="nav-link p-0 text-body-secondary">Contact Us</a></li>
+            </ul>
+        </div>
+
+        <div class="col-md-2">
+            <h5>Account</h5>
+            <ul class="nav flex-column">
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Register</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Login</a></li>
+            </ul>
+        </div>
+
+        <div class="col-md-2">
+            <h5>Company</h5>
+            <ul class="nav flex-column">
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About Us</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Property</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Privacy Police</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Term of Policy</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
 
 
 
@@ -428,6 +498,92 @@ function generateSpecificIndices(maxLength, start, end) {
 
     return indices;
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    const cards = document.querySelectorAll(".card");
+    const pagination = document.querySelector(".pagination");
+    const pageItems = document.querySelectorAll(".page-item");
+    const pageLinks = document.querySelectorAll(".page-link");
+    const seeMoreButtons = document.querySelectorAll(".btn-success");
+    let currentPage = 1;
+
+    function fetchData() {
+        fetch("json/data.json")
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                let startIndex = (currentPage - 1) * cards.length;
+            let endIndex = Math.min(startIndex + cards.length, data.length);
+
+                for (let i = 0; i < cards.length; i++) {
+                    let index = (currentPage - 1) * cards.length + i; // adjust for current page
+                    if (index < data.length) {
+                        let item = data[index];
+                        let listItems = cards[i].querySelectorAll("li");
+                        let existingImage = cards[i].querySelector("img");
+                        if (existingImage) {
+                            cards[i].removeChild(existingImage);
+                        }
+                        let image = document.createElement("img");
+                        image.src = item.imgSrc;
+                        image.addEventListener("error", function () {
+                            image.src = "images/placeholder.jpg";
+                        });
+                        image.addEventListener("click", function () {
+                            showModal(item.imgSrc);
+                        });
+                        cards[i].prepend(image);
+                        listItems[0].textContent = item.homeStatus ? `Home status: ${item.homeStatus}` : "";
+                        listItems[1].textContent = item.city ? `City: ${item.city}` : "";
+                        listItems[2].textContent = item.country ? `Country: ${item.country}` : "";
+
+                        let sellingPrice = item.price ? `$${item.price.toLocaleString()}` : "";
+                        listItems[3].textContent = `Selling Price: ${sellingPrice}`;
+
+                        listItems[4].style.display = (item.lotAreaValue !== undefined && item.lotAreaUnit !== undefined) ? "list-item" : "none";
+                        if (item.lotAreaValue !== undefined && item.lotAreaUnit !== undefined) {
+                            let roundedLotArea = parseFloat(item.lotAreaValue.toFixed(2));
+                            let lotAreaContent = Number.isNaN(roundedLotArea) ? "" : `${roundedLotArea} ${item.lotAreaUnit}`;
+                            listItems[4].textContent = `Lot Area: ${lotAreaContent}`;
+                        } else {
+                            listItems[4].textContent = "";
+                        }
+                        
+                        
+                        seeMoreButtons[i].setAttribute("data-id", item.zpid);
+                    }
+                }
+            
+            })
+            .catch((error) => {
+                alert(`Error fetching data: ${error}`);
+            });
+    }
+    
+
+
+function redirectToPropertyPage(propertyId) {
+    fetch("json/data.json")
+    .then((response) => response.json())
+    .then((data) => {
+      let propertyData = data.find((item) => item.zpid == propertyId);
+      window.location.href = `Singlepage.html?zpid=${propertyId}&data=${JSON.stringify(propertyData)}`;
+    })
+    .catch((error) => {
+      alert(`Error fetching data: ${error}`);
+    });
+}
+    
+    for (let i = 0; i < seeMoreButtons.length; i++) {
+        seeMoreButtons[i].addEventListener("click", function () {
+            let propertyId = seeMoreButtons[i].getAttribute("data-id");
+            redirectToPropertyPage(propertyId);
+        });
+    }
+    fetchData();
+
+});
+
 
 // Fetch data and update hero images on page load
 document.addEventListener("DOMContentLoaded", () => {
