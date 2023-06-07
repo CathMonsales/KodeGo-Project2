@@ -15,7 +15,17 @@
       color: black;
       background-color: rgb(245, 245, 245);
     }
+    .btn-custom {
+            background-color: #006741;
+            color: white;
+            border: 4px solid #02F89C;
+        }
 
+        .btn-custom:hover {
+            background-color: white;
+            color: #006741;
+            border: 4px solid#02F89C;
+        }
     .nav-link {
       position: relative;
       color: #282828;
@@ -185,7 +195,11 @@
         </p>
       </div>
       <div class="col-md-1"></div>
-      <div class="col-md-3 mt-5 border text-center"><h3>Book a viewing now!</h3></div>
+      <div class="col-md-3 mt-5 border text-center d-flex justify-content-center align-items-center">
+        <h3 class="fs-4">Interested to know more?<a href="booking.html" class="btn btn-custom mt-3">Book a viewing now!</a></h3>
+       
+      </div>
+      
     </div>
   </div>
   
@@ -228,62 +242,66 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
     crossorigin="anonymous"></script>
-  <script>
-    const jsonUrl = "json/data.json";
-    const zpid = new URLSearchParams(window.location.search).get("zpid");
-    const propertyTitle = document.querySelector("#property-title");
-    const propertyImage = document.querySelector("#property-image");
-    const propertyDetails = document.querySelector("#property-details");
-
-    function fetchData() {
-      fetch(jsonUrl)
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
-          let item = data.find((item) => item.zpid == zpid);
-          if (item) {
-            propertyTitle.textContent = item.homeStatus
-              ? `${item.city}, ${item.country}`
-              : `${item.city}, ${item.country}`;
-            propertyImage.src = item.imgSrc;
-            propertyDetails.innerHTML = `
-          <h1 class="fs-5">Home status: <span id="home-status">${item.homeStatus}</span></h1>
-          <h1 class="fs-5">City: <span id="city"><i class="bi bi-geo-alt-fill"></i> ${item.city}</span></h1>
-          <h1 class="fs-5">Country: <span id="country"><i class="bi bi-flag-fill"></i> ${item.country}</span></h1>
-          <h1 class="fs-5">Price: <span id="price"> ${item.price ? `$${item.price.toLocaleString()}` : 'N/A'}</span></h1>
-          <h1 class="fs-5">Lot area: <span id="lot-area"><i class="bi bi-arrows-expand"></i> ${item.lotAreaValue !== undefined && item.lotAreaUnit !== undefined ? `${item.lotAreaValue} ${item.lotAreaUnit}` : 'N/A'}</span></h1>
-        `;
-          } else {
-            alert("No property found with that zpid.");
-          }
-        })
-        .catch((error) => {
-          alert(`Error fetching data: ${error}`);
-        });
-    }
-
-    fetchData();
-
-    function goBack() {
-      window.location.href = 'pagination.html';
-    }
-
-    function myFunction() {
-      var dots = document.getElementById("dots");
-      var moreText = document.getElementById("more");
-      var btnText = document.getElementById("readMore");
-
-      if (dots.style.display === "none") {
-        dots.style.display = "inline";
-        btnText.innerHTML = "Read More...";
-        moreText.style.display = "none";
-      } else {
-        dots.style.display = "none";
-        btnText.innerHTML = "Read Less...";
-        moreText.style.display = "inline";
+    <script>
+      const jsonUrl = "json/data.json";
+      const zpid = new URLSearchParams(window.location.search).get("zpid");
+      const propertyTitle = document.querySelector("#property-title");
+      const propertyImage = document.querySelector("#property-image");
+      const propertyDetails = document.querySelector("#property-details");
+  
+      function fetchData() {
+        fetch(jsonUrl)
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+            let item = data.find((item) => item.zpid == zpid);
+            if (item) {
+              propertyTitle.textContent = item.homeStatus
+                ? `${item.city}, ${item.country}`
+                : `${item.city}, ${item.country}`;
+              propertyImage.src = item.imgSrc;
+              propertyDetails.innerHTML = `
+              <div class="container">
+                <div class="row">
+                <h1 class="col-md-12 fs-5 text-left">Home status: <span id="home-status">${item.homeStatus}</span></h1>
+                <h1 class="col-md-4 fs-5">City: <span id="city"><i class="bi bi-geo-alt-fill"></i> ${item.city}</span></h1>
+                <h1 class="col-md-4 fs-5">Country: <span id="country"><i class="bi bi-flag-fill"></i> ${item.country}</span></h1>
+                <h1 class="col-md-4 fs-5">Price: <span id="price"> ${item.price ? `$${item.price.toLocaleString()}` : 'N/A'}</span></h1>
+                <h1 class="col-md-4 fs-5">Lot area: <span id="lot-area"><i class="bi bi-rulers"></i> ${item.lotAreaValue !== undefined && item.lotAreaUnit !== undefined ? `${item.lotAreaValue} ${item.lotAreaUnit}` : 'N/A'}</span></h1>
+                <h1 class="col-md-4 fs-5">Bedrooms: <span id="bedrooms"><i class="bi bi-door-open-fill"></i>${item.bedrooms !== undefined && !isNaN(item.bedrooms) ? item.bedrooms : 'N/A'}</span></h1>
+                <h1 class="col-md-4 fs-5">Bathrooms: <span id="bathrooms"><i class="bi bi-droplet-fill"></i>${item.bathrooms !== undefined && !isNaN(item.bathrooms) ? item.bathrooms : 'N/A'}</span></h1>
+              `;
+            } else {
+              alert("No property found with that zpid.");
+            }
+          })
+          .catch((error) => {
+            alert(`Error fetching data: ${error}`);
+          });
       }
-    }
-  </script>
+  
+      fetchData();
+  
+      function goBack() {
+        window.location.href = 'pagination.html';
+      }
+  
+      function myFunction() {
+        var dots = document.getElementById("dots");
+        var moreText = document.getElementById("more");
+        var btnText = document.getElementById("readMore");
+  
+        if (dots.style.display === "none") {
+          dots.style.display = "inline";
+          btnText.innerHTML = "Read More...";
+          moreText.style.display = "none";
+        } else {
+          dots.style.display = "none";
+          btnText.innerHTML = "Read Less...";
+          moreText.style.display = "inline";
+        }
+      }
+    </script>
 </body>
 
 </html>
