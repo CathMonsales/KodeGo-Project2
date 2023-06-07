@@ -18,7 +18,6 @@
     <style>
         body {
             color: black;
-            background-image: linear-gradient(to bottom right, rgb(0, 255, 149), rgb(217, 217, 217))
         }
 
         main {
@@ -107,6 +106,24 @@
             background: var(--red);
             color: #fff;
         }
+
+        .brand_underline {
+            position: relative;
+            display: inline-block;
+            z-index: 1;
+        }
+
+        .brand_underline::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 7px;
+            margin-bottom: 8px;
+            background-color: #02F89C;
+            z-index: -1;
+        }
     </style>
 
 </head>
@@ -143,7 +160,7 @@
 
     <section class="agents" id="agents">
 
-        <h1 class="heading" style="text-align: center;">Agents</h1>
+        <h1 class="heading text-center mt-5 mb-5"><span class="brand_underline">Agents</span></h1>
 
 
         <div class="box-container">
