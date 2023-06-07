@@ -8,19 +8,20 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-        <link rel="icon" type="image" href="images/icon.png">
+    <link rel="icon" type="image" href="images/icon.png">
     <link rel="stylesheet" href="css/general.css">
     <title>Property Listings</title>
     <style>
         .navbar-nav {
-        flex-direction: column;
-        align-items: center;
-        margin-top: 1rem;
-    }
+            flex-direction: column;
+            align-items: center;
+            margin-top: 1rem;
+        }
 
         .nav-item {
-        margin-bottom: 10px;
-    }
+            margin-bottom: 10px;
+        }
+
         .nav-link {
             position: relative;
             color: #282828;
@@ -134,15 +135,35 @@
     <div class="px-4 py-5 my-5 text-center">
         <h1 class="display-5 fw-bold text-body-emphasis"><span class="brand_underline">Properties</span></h1>
         <div class="col-lg-6 mx-auto">
-            <p class="lead mb-4">Discover your dream property with StayBnB. Find homes, apartments, 
-                and investment opportunities that match your needs and budget. Our team of experienced professionals 
-                is here to guide you through the buying, selling, or renting process. Start your real estate journey 
+            <p class="lead mb-4">Discover your dream property with StayBnB. Find homes, apartments,
+                and investment opportunities that match your needs and budget. Our team of experienced professionals
+                is here to guide you through the buying, selling, or renting process. Start your real estate journey
                 today.
             </p>
         </div>
     </div>
 
+    <div class="container mb-3">
+        <div class="row">
+        <div class=" col-md-10 d-flex justify-content-end">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="sortButton" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+              Sort
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="sortButton">
+              <li><a class="dropdown-item sort-option" href="#" data-sort="price-high-low">Price: High to Low</a></li>
+              <li><a class="dropdown-item sort-option" href="#" data-sort="price-low-high">Price: Low to High</a></li>
+              <li><a class="dropdown-item sort-option" href="#" data-sort="lot-area-high-low">Lot Area: High to Low</a></li>
+              <li><a class="dropdown-item sort-option" href="#" data-sort="lot-area-low-high">Lot Area: Low to High</a></li>
+            </ul>
+          </div>
+        </div>
+    </div>
+      </div>
+      
     <div class="container">
+
         <div class="pagination-wrapper pt-1 d-flex flex-wrap justify-content-center align-items-center gap-3"
             style="width: 90%; max-width: 1000px; margin: 0 auto;">
             <div class="card bg-white shadow-sm rounded-3 overflow-hidden flex-grow-1" style="max-width: 300px;">
@@ -312,40 +333,49 @@
             <div class="col-md-5">
                 <img src="images/staybnb.png" width="200" class="ml-5">
             </div>
-    
+
             <div class="col-md-2">
                 <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="index.html" class="nav-link p-0 text-body-secondary"><h5>Home</h5></a></li>
-                <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="pagination.html" class="nav-link p-0 text-body-secondary">Properties</a></li>
-                    
-                </ul>
+                    <li class="nav-item mb-2"><a href="index.html" class="nav-link p-0 text-body-secondary">
+                            <h5>Home</h5>
+                        </a></li>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="pagination.html"
+                                class="nav-link p-0 text-body-secondary">Properties</a></li>
+
+                    </ul>
             </div>
-    
+
             <div class="col-md-2">
                 <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="agents.html" class="nav-link p-0 text-body-secondary"><h5>Agents</h5></a></li>
-                <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="privacy.html" class="nav-link p-0 text-body-secondary">Privacy Policy</a></li>
-                    <li class="nav-item mb-2"><a href="termsofuse.html" class="nav-link p-0 text-body-secondary">Terms of Use</a></li>
-                </ul>
+                    <li class="nav-item mb-2"><a href="agents.html" class="nav-link p-0 text-body-secondary">
+                            <h5>Agents</h5>
+                        </a></li>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="privacy.html"
+                                class="nav-link p-0 text-body-secondary">Privacy Policy</a></li>
+                        <li class="nav-item mb-2"><a href="termsofuse.html"
+                                class="nav-link p-0 text-body-secondary">Terms of Use</a></li>
+                    </ul>
             </div>
-    
+
             <div class="col-md-2">
                 <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="contact.html" class="nav-link p-0 text-body-secondary"><h5>Contact Us</h5></a></li>
-                <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><p-0 text-body-secondary>(021) 123-456</a></li>
-                    <li class="nav-item mb-2"><p-0 text-body-secondary>hello@staybnb.com</a></li>
-                    <li class="nav-item mb-2"><a href="booking.html" class="nav-link p-0 text-body-secondary">Book a Viewing Now!</a></li>
-                    
-                </ul>
+                    <li class="nav-item mb-2"><a href="contact.html" class="nav-link p-0 text-body-secondary">
+                            <h5>Contact Us</h5>
+                        </a></li>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><p-0 text-body-secondary>(021) 123-456</a></li>
+                        <li class="nav-item mb-2"><p-0 text-body-secondary>hello@staybnb.com</a></li>
+                        <li class="nav-item mb-2"><a href="booking.html" class="nav-link p-0 text-body-secondary">Book a
+                                Viewing Now!</a></li>
+
+                    </ul>
             </div>
         </div>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const cards = document.querySelectorAll(".card");
@@ -355,20 +385,33 @@
             const seeMoreButtons = document.querySelectorAll(".btn-success");
             let currentPage = 1;
             let storedPage = sessionStorage.getItem("currentPage");
+            let sortOption = ""; // Added variable for sort option
             if (storedPage) {
                 currentPage = parseInt(storedPage);
             }
-
+    
+            function sortData(data) {
+                if (sortOption === "price-high-low") {
+                    data.sort((a, b) => b.price - a.price);
+                } else if (sortOption === "price-low-high") {
+                    data.sort((a, b) => a.price - b.price);
+                } else if (sortOption === "lot-area-high-low") {
+                    data.sort((a, b) => b.lotAreaValue - a.lotAreaValue);
+                } else if (sortOption === "lot-area-low-high") {
+                    data.sort((a, b) => a.lotAreaValue - b.lotAreaValue);
+                }
+            }
+    
             function fetchData() {
                 fetch("json/data.json")
                     .then((response) => response.json())
                     .then((data) => {
-                        console.log(data);
+                        sortData(data); // Sort the data
                         let startIndex = (currentPage - 1) * cards.length;
                         let endIndex = Math.min(startIndex + cards.length, data.length);
-
+    
                         for (let i = 0; i < cards.length; i++) {
-                            let index = (currentPage - 1) * cards.length + i; // adjust for current page
+                            let index = startIndex + i;
                             if (index < data.length) {
                                 let item = data[index];
                                 let listItems = cards[i].querySelectorAll("li");
@@ -388,10 +431,10 @@
                                 listItems[0].innerHTML = `<i class="bi bi-house-fill me-2"></i>${item.homeStatus ? item.homeStatus : ""}`;
                                 listItems[1].innerHTML = `<i class="bi bi-geo-alt-fill me-2"></i>${item.city ? item.city : ""}`;
                                 listItems[2].innerHTML = `<i class="bi bi-flag-fill me-2"></i>${item.country ? item.country : ""}`;
-
+    
                                 let sellingPrice = item.price ? `$${item.price.toLocaleString()}` : "";
                                 listItems[3].innerHTML = `<i class="bi bi-currency-dollar me-2"></i>Selling Price: ${sellingPrice}`;
-
+    
                                 listItems[4].style.display = (item.lotAreaValue !== undefined && item.lotAreaUnit !== undefined) ? "list-item" : "none";
                                 if (item.lotAreaValue !== undefined && item.lotAreaUnit !== undefined) {
                                     let roundedLotArea = parseFloat(item.lotAreaValue.toFixed(2));
@@ -408,7 +451,7 @@
                         alert(`Error fetching data: ${error}`);
                     });
             }
-
+    
             function updatePagination() {
                 for (let i = 0; i < pageItems.length; i++) {
                     pageItems[i].classList.remove("active");
@@ -422,7 +465,7 @@
                     pageItems[9].classList.add("disabled");
                 }
             }
-
+    
             function handleClick(event, resetPage = false) {
                 event.preventDefault();
                 let text = event.target.textContent;
@@ -431,7 +474,7 @@
                         currentPage--;
                     }
                 } else if (text === "Next") {
-                    if (currentPage < 5) {
+                    if (currentPage < 8) {
                         currentPage++;
                     }
                 } else {
@@ -444,26 +487,48 @@
                     sessionStorage.removeItem("currentPage");
                 }
             }
-
+    
             for (let i = 0; i < pageLinks.length; i++) {
                 pageLinks[i].addEventListener("click", function (event) {
                     handleClick(event, true);
                 });
             }
-
+    
             function redirectToPropertyPage(propertyId) {
                 sessionStorage.setItem("currentPage", currentPage.toString());
                 window.location.href = `Singlepage.html?zpid=${propertyId}`;
             }
-
+    
             for (let i = 0; i < seeMoreButtons.length; i++) {
                 seeMoreButtons[i].addEventListener("click", function () {
                     let propertyId = seeMoreButtons[i].getAttribute("data-id");
                     redirectToPropertyPage(propertyId);
                 });
             }
-
-            // Check if the current page is set in the URL query parameters
+    
+            const sortOptions = document.querySelectorAll(".sort-option");
+            sortOptions.forEach((option) => {
+                option.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    sortOption = option.getAttribute("data-sort"); // Update sortOption variable
+                    sessionStorage.setItem("sortOption", sortOption); // Store sort option in session storage
+                    currentPage = 1; // Reset current page when sorting
+                    sessionStorage.setItem("currentPage", currentPage.toString());
+                    fetchData(sortOption); // Pass the sort option to fetchData
+                    updatePagination();
+                });
+            });
+    
+            // Check if the current page and sort option are set in the session storage
+            const storedSortOption = sessionStorage.getItem("sortOption");
+            if (storedSortOption) {
+                sortOption = storedSortOption;
+                const selectedSortOption = document.querySelector(`.sort-option[data-sort="${sortOption}"]`);
+                if (selectedSortOption) {
+                    selectedSortOption.classList.add("active");
+                }
+            }
+    
             const urlParams = new URLSearchParams(window.location.search);
             const pageParam = urlParams.get("page");
             if (pageParam) {
@@ -472,17 +537,12 @@
             } else {
                 sessionStorage.removeItem("currentPage");
             }
-
+    
             fetchData();
             updatePagination();
         });
-
     </script>
-
-
-
-
-
+    
 </body>
 
 </html>
