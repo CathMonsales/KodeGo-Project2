@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
+
+* {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.navbar-nav {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.nav-item {
+    margin-bottom: 10px;
+}
+
+.nav-link {
+    position: relative;
+    color: #282828;
+    text-decoration: none;
+    margin: 3px;
+    z-index: 1;
+}
+
+.centered-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-link.active::after {
+    content: "";
+    position: absolute;
+    bottom: 10px;
+    left: 10%;
+    width: 80%;
+    height: 5px;
+    background-color: #02F89C;
+    z-index: -1;
+}
+
+.brand_underline {
+    position: relative;
+    display: inline-block;
+    z-index: 1;
+}
+
+.brand_underline::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 7px;
+    margin-bottom: 8px;
+    background-color: #02F89C;
+    z-index: -1;
+}
+
+.pagination {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.pagination li {
+    margin: 0 5px;
+}
+
+.pagination li.disabled span,
+.pagination li.disabled a {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.pagination li.active span,
+.pagination li.active a {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+}
+
+.pagination li a,
+.pagination li span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+}

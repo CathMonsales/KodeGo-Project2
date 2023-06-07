@@ -8,171 +8,15 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="css/agents.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://kit.fontawesome.com/572c759e4b.js" crossorigin="anonymous"></script>
-    <link rel="icon" type="image" href="images/icon.png">
     <title>Agents</title>
     <link rel="icon" type="image/x-icon" href="/images/icon.png">
 
     <style>
-        .navbar-nav {
-        flex-direction: column;
-        align-items: center;
-        margin-top: 1rem;
-    }
-
-        .nav-item {
-        margin-bottom: 10px;
-    }
-        .nav-link {
-            position: relative;
-            color: #282828;
-            text-decoration: none;
-            margin: 3px;
-            z-index: 1;
-        }
-
-        .centered-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .nav-link.active::after {
-            content: "";
-            position: absolute;
-            bottom: 10px;
-            left: 10%;
-            width: 80%;
-            height: 5px;
-            background-color: #02F89C;
-            z-index: -1;
-        }
-
-
-        body {
-            color: black;
-        }
-
-        main {
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-            flex-wrap: wrap;
-            background-color: white;
-        }
-
-        
-    .agents .box-container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1.5rem;
-        justify-content: center;
-        max-width: 900px;
-        margin-left: auto;
-        margin-right: auto;
-        padding-left: 15px;
-        padding-right: 15px;
-    }
-
-    
-    .agents .box-container .box {
-        background: #fff;
-        text-align: center;
-        border: .1rem solid rgba(0, 0, 0, .2);
-        box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
-        border-radius: .5rem;
-        padding: 1rem;
-        position: relative;
-        flex-basis: 100%;
-         
-    }
-
- 
-    @media (min-width: 576px) {
-        .agents .box-container .box {
-            flex-basis: calc((100% - 1.5rem) / 3); 
-        }
-    }
-
-    @media (min-width: 768px) {
-        .agents .box-container .box {
-            flex-basis: calc((100% - 1.5rem) / 2); 
-        }
-    }
-
-        .agents .box-container .box .fa-envelope {
-            position: absolute;
-            top: 1.8rem;
-            left: 2rem;
-            color: #333;
-            font-size: 2rem;
-        }
-
-
-        .agents .box-container .box .fa-phone {
-            position: absolute;
-            top: 1.8rem;
-            right: 2rem;
-            color: #333;
-            font-size: 2rem;
-        }
-
-
-        .agents .box-container .box img {
-            border-radius: 50%;
-            box-shadow: 0 0 0 .5rem rgba(0, 0, 0, .1);
-            object-fit: cover;
-            height: 10rem;
-            width: 10rem;
-            margin: 1rem 0;
-        }
-
-        .agents .box-container .box h3 {
-            font-size: 2rem;
-            color: #333;
-        }
-
-        .agents .box-container .box span {
-            font-size: 1.7rem;
-            color: var(--red);
-        }
-
-        .agents .box-container .box .share {
-            padding-top: 2rem;
-        }
-
-        .agents .box-container .box .share a {
-            margin: 0 .3rem;
-            height: 4rem;
-            width: 4rem;
-            line-height: 4rem;
-            background: #f7f7f7;
-            color: #666;
-            border-radius: .5rem;
-            font-size: 2rem;
-        }
-
-
-
-        .brand_underline {
-            position: relative;
-            display: inline-block;
-            z-index: 1;
-        }
-
-        .brand_underline::after {
-            content: "";
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 100%;
-            height: 7px;
-            margin-bottom: 8px;
-            background-color: #02F89C;
-            z-index: -1;
-        }
     </style>
 
 </head>
@@ -209,7 +53,7 @@
 
     <section class="agents" id="agents">
 
-        <h1 class="heading text-center mt-5 mb-5"><span class="brand_underline">Agents</span></h1>
+        <h1 class="fw-bold display-4 text-center mt-5 mb-5"><span class="brand_underline">Agents</span></h1>
 
 
         <div class="box-container">
@@ -277,63 +121,60 @@
     <br>
     <br>
 
-    <div class="container">
+    <div class="container mt-5">
         <div class="row">
             <div class="col-md-12">
-                <div class="about text-center">
-                    <h1 class="display-5 fw-normal text-body-emphasis">About <span class="brand_underline">Us</span>
+                <div class="a text-center">
+                    <h1 class="fw-bold display-4">About <span class="brand_underline">Us</span>
                     </h1>
                     <p class="lead mb-4">
-                        StayBnB Real Estate is a premier real estate service that specializes in offering exceptional
-                        properties for short-term and long-term stays. We understand that finding the perfect home or
-                        investment property is a significant decision, and we strive to provide a seamless and rewarding
-                        experience for buyers, sellers, and renters alike.
+                        Staybnb Real Estate is your trusted partner in the dynamic world of real estate.<br>Experience the
+                        difference of working with a real estate agency that truly cares about your
+                        success.
                     </p>
                 </div>
             </div>
         </div>
     </div>
 
-    <main class="container">
+    <main class="container mt-5">
         <div class="row" style="margin-top: 50px;">
             <div class="col-md-7 bg-white">
                 <div>
-                    <h1 class="display-5 fw-normal text-center text-body-emphasis">What Sets Us Apart</h1>
-                    <ul>
+                    <h1 class="fw-bold display-4 text-left"><span class="brand_underline">What Sets
+                            Us Apart</span></h1>
+                    <div class="fw-medium mt-5">
                         <li>Extensive Propety Portfolio</li>
                         <li>Market Expertise</li>
                         <li>Personalized Approach</li>
                         <li>Professional Guidance</li>
                         <li>Trust and Integrity</li>
                         <li>Exceptional Customer Service</li>
+                    </div>
                     </ul>
-                    <p class="text-center">
-                        Whether you're searching for your dream home, selling a property, or seeking a reliable real
-                        estate
-                        partner, StayBnB Real Estate is here to assist you. We are passionate about real estate and
-                        dedicated
-                        to helping our clients achieve their goals. Contact us today and let us guide you through the
-                        exciting
-                        world of real estate.
+                    <p class="fw-medium text-left mt-5">
+                        If you're in pursuit of your ideal home, aiming to sell a property, or in need of a trustworthy
+                        real estate ally, look no further than Staybnb Real Estate. Our unwavering passion for the real
+                        estate industry drives us to assist clients in accomplishing their objectives. Reach out to us
+                        today and allow our expertise to navigate you through the exhilarating realm of real estate.
                     </p>
                 </div>
             </div>
-            <div class="col-md-5 p-3 bg-dark text-white">
-                <h1 class="fw-medium text-center">Vission</h1>
-                <p>
-                    Our vision is to be the trusted real estate partner that helps individuals and families find
-                    their dream homes or lucrative investment properties. We aim to simplify the real estate process,
-                    provide transparent and reliable information, and deliver exceptional customer service to our
-                    clients.
+            <div class="col-md-1"></div>
+            <div class="col-md-4 p-3 bg-light rounded">
+                <h1 class="fw-bold display-6 text-end"><span class="brand_underline">Vision</span></h1>
+                <p class="fw-medium text-left">
+                    Staybnb Real Estate aims to be the leading agency, revolutionizing the industry through innovation,
+                    client-centricity, and setting new standards. We envision a future where everyone can confidently
+                    navigate the real estate market, supported by our expertise, advanced technology, and a seamless,
+                    personalized experience.
                 </p>
                 <hr>
-                <h1 class="fw-medium text-center">Mission</h1>
-                <p>
-                    Our mission is to connect buyers, sellers, and renters with high-quality properties that meet their
-                    unique needs and preferences. We are dedicated to providing comprehensive real estate services,
-                    including
-                    property marketing, property management, and personalized assistance throughout the entire real
-                    estate journey.
+                <h1 class="fw-bold display-6 text-end"><span class="brand_underline">Mission</span></h1>
+                <p class="fw-medium text-left">
+                    Staybnb Real Estate's mission is to empower clients in achieving their real estate goals with
+                    exceptional service and unwavering dedication. We are committed to building long-lasting
+                    relationships based on trust, integrity, and personalized solutions that exceed expectations.
                 </p>
             </div>
         </div>
@@ -386,8 +227,8 @@
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-    crossorigin="anonymous"></script>
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
