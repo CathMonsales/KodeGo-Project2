@@ -15,7 +15,7 @@
     <link rel="icon" type="image/x-icon" href="/images/icon.png">
 
     <style>
-        html,
+       html,
         body {
           height: 100%;
           margin: 0;
@@ -23,23 +23,25 @@
         }
     
         .boxed {
-          min-height: 66.5%;
+          min-height: 68%;
         }
     
         footer {
           margin-top: auto;
         }
     
-    
+
+
         .navbar-nav {
-        flex-direction: column;
-        align-items: center;
-        margin-top: 1rem;
-    }
+            flex-direction: column;
+            align-items: center;
+            margin-top: 1rem;
+        }
 
         .nav-item {
-        margin-bottom: 10px;
-    }
+            margin-bottom: 10px;
+        }
+
         .nav-link {
             position: relative;
             color: #282828;
@@ -70,7 +72,7 @@
             display: inline-block;
             z-index: 1;
         }
-    
+
         .brand_underline::after {
             content: "";
             position: absolute;
@@ -115,7 +117,7 @@
             </div>
         </div>
     </nav>
-    <main class="container">
+    <main class="container boxed">
         <div class="row" style="margin-top: 50px;">
             <div class="col-sm-8 p-5">
                 <h1 class="fs-1">Book a <span class="brand_underline">Viewing</span></h1>
@@ -176,27 +178,42 @@
 
             <div class="col-md-2">
                 <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="index.html" class="nav-link">Home</a></li>
-                    <li class="nav-item mb-2"><a href="pagination.html?page=1" class="nav-link">Properties</a></li>
-                    <li class="nav-item mb-2"><a href="agents.html" class="nav-link">Agents</a></li>
-                    <li class="nav-item mb-2"><a href="contact.html" class="nav-link">Contact Us</a></li>
-                    <li class="nav-item mb-2"><a href="booking.html" class="nav-link">Book a Viewing</a></li>
-                </ul>
+                    <li class="nav-item mb-2"><a href="index.html" class="nav-link p-0 text-body-secondary">
+                            <h5>Home</h5>
+                        </a></li>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="pagination.html"
+                                class="nav-link p-0 text-body-secondary">Properties</a></li>
+
+                    </ul>
             </div>
 
-            <div class="col-md-5">
-                <h5>Contact Us</h5>
-                <div class="text-secondary">
-                    <i class="fas fa-envelope"></i> staybnb@gmail.com<br>
-                    <i class="fas fa-phone"></i> 555-555-555<br>
-                    <i class="fas fa-city"></i> 88 Melbourne St.<br>
-                    <i class="fas fa-clock"></i> 09:00 - 18:00<br>
-                </div>
+            <div class="col-md-2">
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="agents.html" class="nav-link p-0 text-body-secondary">
+                            <h5>Agents</h5>
+                        </a></li>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="privacy.html"
+                                class="nav-link p-0 text-body-secondary">Privacy Policy</a></li>
+                        <li class="nav-item mb-2"><a href="termsofuse.html"
+                                class="nav-link p-0 text-body-secondary">Terms of Use</a></li>
+                    </ul>
             </div>
-        </div>
-        <hr class="my-3">
-        <div class="text-center">
-            &copy; 2023 StayBnB. All Rights Reserved.
+
+            <div class="col-md-2">
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="contact.html" class="nav-link p-0 text-body-secondary">
+                            <h5>Contact Us</h5>
+                        </a></li>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><p-0 text-body-secondary>(021) 123-456</a></li>
+                        <li class="nav-item mb-2"><p-0 text-body-secondary>hello@staybnb.com</a></li>
+                        <li class="nav-item mb-2"><a href="booking.html" class="nav-link p-0 text-body-secondary">Book a
+                                Viewing Now!</a></li>
+
+                    </ul>
+            </div>
         </div>
     </footer>
 
@@ -207,7 +224,7 @@
     <script type="module">
         // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
-  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js";
+        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js";
 
 
         const firebaseConfig = {
@@ -219,42 +236,42 @@
             appId: "1:474414165470:web:397c698ac971b8d09c814f"
         };
 
-       // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
 
-  // Submit form data to Firestore
-  var bookingForm = document.getElementById("booking-form");
-  bookingForm.addEventListener("submit", async function (e) {
-    e.preventDefault();
+        // Submit form data to Firestore
+        var bookingForm = document.getElementById("booking-form");
+        bookingForm.addEventListener("submit", async function (e) {
+            e.preventDefault();
 
-    // Get form values
-    var name = document.getElementById("name").value;
-    var contactNumber = document.getElementById("contact-number").value;
-    var email = document.getElementById("email").value;
-    var preferredDate = document.getElementById("preferred-date").value;
-    var message = document.getElementById("message").value;
+            // Get form values
+            var name = document.getElementById("name").value;
+            var contactNumber = document.getElementById("contact-number").value;
+            var email = document.getElementById("email").value;
+            var preferredDate = document.getElementById("preferred-date").value;
+            var message = document.getElementById("message").value;
 
-    try {
-      // Save form data to Firestore
-      const docRef = await addDoc(collection(db, "bookings"), {
-        name: name,
-        contactNumber: contactNumber,
-        email: email,
-        preferredDate: preferredDate,
-        message: message,
-        contacted: false
-      });
+            try {
+                // Save form data to Firestore
+                const docRef = await addDoc(collection(db, "bookings"), {
+                    name: name,
+                    contactNumber: contactNumber,
+                    email: email,
+                    preferredDate: preferredDate,
+                    message: message,
+                    contacted: false
+                });
 
-      // Reset form after successful submission
-      bookingForm.reset();
-      alert("Your booking has been submitted successfully!");
-    } catch (error) {
-      console.error("Error adding document: ", error);
-      alert("An error occurred. Please try again later.");
-    }
-  });
-</script>
+                // Reset form after successful submission
+                bookingForm.reset();
+                alert("Your booking has been submitted successfully!");
+            } catch (error) {
+                console.error("Error adding document: ", error);
+                alert("An error occurred. Please try again later.");
+            }
+        });
+    </script>
 </body>
 
 </html>
