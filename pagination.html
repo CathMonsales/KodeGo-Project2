@@ -370,7 +370,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const seeMoreButtons = document.querySelectorAll(".btn-success");
   const priceRangeSlider = document.getElementById("priceRange");
   const priceRangeLabel = document.getElementById("priceRangeLabel");
-  const lotRangeSlider= document.getElementById("lotRange");
+  const lotRangeSlider = document.getElementById("lotRange");
   const lotRangeLabel = document.getElementById("lotRangeLabel");
   let currentPage = 1;
 
@@ -391,7 +391,7 @@ document.addEventListener("DOMContentLoaded", function () {
     lotRangeLabel.textContent = `0 - ${maxLotArea.toLocaleString()} sqft`;
     fetchData(undefined, undefined, minLotArea, maxLotArea);
   });
-  
+
   function compareLotArea(a, b) {
     // sort in descending order of lot area size
     const aLotArea = a.lotAreaValue || 0;
@@ -405,12 +405,18 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((data) => {
         console.log(data);
 
-        let filteredData = data.filter(item => item.price >= minPrice && item.price <= maxPrice);
+        let filteredData = data.filter(
+          (item) =>
+            item.price >= minPrice &&
+            item.price <= maxPrice &&
+            item.lotAreaValue >= minLotArea &&
+            item.lotAreaValue <= maxLotArea
+        );
         let sortedData = filteredData.sort(compareLotArea); // Sort data by lot area size
 
         let startIndex = (currentPage - 1) * cards.length;
         let endIndex = Math.min(startIndex + cards.length, sortedData.length);
-        
+
         for (let i = 0; i < cards.length; i++) {
           let index = (currentPage - 1) * cards.length + i; // adjust for current page
           if (index < sortedData.length) {
@@ -434,10 +440,16 @@ document.addEventListener("DOMContentLoaded", function () {
             listItems[2].innerHTML = `<i class="bi bi-flag-fill me-2"></i>${item.country ? item.country : ""}`;
             let sellingPrice = item.price ? `$${item.price.toLocaleString()}` : "";
             listItems[3].innerHTML = `<i class="bi bi-currency-dollar me-2"></i>Selling Price: ${sellingPrice}`;
-            listItems[4].style.display = item.lotAreaValue !== undefined && item.lotAreaUnit !== undefined ? "list-item" : "none";
+            listItems[4].style.display =
+              item.lotAreaValue !== undefined &&
+              item.lotAreaUnit !== undefined
+                ? "list-item"
+                : "none";
             if (item.lotAreaValue !== undefined && item.lotAreaUnit !== undefined) {
               let roundedLotArea = parseFloat(item.lotAreaValue.toFixed(2));
-              let lotAreaContent = Number.isNaN(roundedLotArea) ? "" : `${roundedLotArea} ${item.lotAreaUnit}`;
+              let lotAreaContent = Number.isNaN(roundedLotArea)
+                ? ""
+                : `${roundedLotArea} ${item.lotAreaUnit}`;
               listItems[4].innerHTML = `<i class="bi bi-bounding-box me-2"></i>Lot Area: ${lotAreaContent}`;
             } else {
               listItems[4].textContent = "";
