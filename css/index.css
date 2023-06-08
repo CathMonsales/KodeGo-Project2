@@ -4,6 +4,27 @@
       font-family: 'Open Sans', sans-serif;
   }
 
+  #preloader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Add responsive styles for the preloader */
+  @media only screen and (max-width: 600px) {
+    #preloader img {
+      max-width: 80%;
+      max-height: 80%;
+    }
+  }
+
   .navbar-nav {
       flex-direction: column;
       align-items: center;

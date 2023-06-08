@@ -1,3 +1,8 @@
+setTimeout(function () {
+    var preloader = document.getElementById("preloader");
+    preloader.style.display = "none";
+  }, 4000);
+
 function fetchData() {
     fetch("json/data.json")
         .then((response) => response.json())
